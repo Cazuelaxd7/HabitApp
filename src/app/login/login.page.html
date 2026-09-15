@@ -1,0 +1,27 @@
+<ion-content class="ion-padding login-content">
+    <div class="login-wrap">
+        <h1 class="brand">HabitApp</h1>
+        <p class="subtitle">Inicia sesión para continuar</p>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <ion-item>
+                <ion-label position="stacked">Correo electrónico</ion-label>
+                <ion-input type="email" formControlName="email" placeholder="tu@correo.com"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Contraseña</ion-label>
+                <ion-input type="password" formControlName="password" placeholder="••••••••"></ion-input>
+            </ion-item>
+
+            <ion-text color="danger" *ngIf="errorMessage">
+                <p class="error-msg">{{ errorMessage }}</p>
+            </ion-text>
+
+            <ion-button expand="block" type="submit" [disabled]="loading" class="login-btn">
+                {{ loading ? 'Ingresando...' : 'Iniciar sesión' }}
+            </ion-button>
+        </form>
+    </div>
+    
+</ion-content>

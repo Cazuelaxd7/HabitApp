@@ -1,0 +1,7 @@
+{
+  "name": "habitapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

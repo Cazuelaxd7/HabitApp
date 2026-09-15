@@ -1,0 +1,33 @@
+.login-content {
+    --background: #EAF3F6;
+}
+
+.login-wrap {
+    max-width: 360px;
+    margin: 80px auto 0;
+}
+
+.brand {
+    color: #21295C;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #64748B;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.login-btn {
+    margin-top: 16px;
+    --background: #065A82;
+}
+
+.error-msg {
+    font-size: 12.5px;
+    margin: 4px 0 0;
+}
