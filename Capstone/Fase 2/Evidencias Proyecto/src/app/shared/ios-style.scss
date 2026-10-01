@@ -1,0 +1,138 @@
+/* ============================================
+   iOS-STYLE DESIGN SYSTEM - HabitApp
+   Importar en src/global.scss DESPUÉS de animations.scss:
+   @import 'app/shared/ios-style.scss';
+   ============================================ */
+
+/* --- Tipografía tipo iOS (usa la fuente del sistema, se ve nativa en cualquier dispositivo) --- */
+:root {
+  --ios-font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+
+  /* Radios de esquina consistentes */
+  --ios-radius-sm: 10px;
+  --ios-radius-md: 14px;
+  --ios-radius-lg: 20px;
+  --ios-radius-pill: 999px;
+
+  /* Sombras suaves, tipo tarjeta flotante */
+  --ios-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --ios-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --ios-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+body, ion-app {
+  font-family: var(--ios-font);
+}
+
+/* --- Botones redondeados tipo iOS --- */
+ion-button {
+  --border-radius: var(--ios-radius-pill);
+  --box-shadow: var(--ios-shadow-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  height: 48px;
+  text-transform: none;
+}
+
+/* Botón principal (expand="block") con más presencia */
+ion-button[expand="block"] {
+  --border-radius: var(--ios-radius-md);
+  --box-shadow: var(--ios-shadow-md);
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Botones de ícono (los de flechita atrás, etc.) totalmente circulares */
+ion-buttons ion-button {
+  --border-radius: var(--ios-radius-pill);
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+/* --- Tarjetas con esquinas grandes tipo iOS --- */
+ion-card,
+.card-interactive,
+.pago-pendiente,
+.historial-item {
+  border-radius: var(--ios-radius-lg) !important;
+  box-shadow: var(--ios-shadow-md) !important;
+  border: none !important;
+}
+
+/* --- Header translúcido tipo iOS (efecto vidrio esmerilado) --- */
+ion-toolbar {
+  --background: rgba(var(--ion-background-color-rgb, 255,255,255), 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+ion-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* --- Badges tipo "pill" --- */
+ion-badge {
+  border-radius: var(--ios-radius-pill);
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* --- Items de lista con separación tipo iOS (sin líneas divisorias duras) --- */
+ion-item {
+  --border-radius: var(--ios-radius-md);
+  --background: transparent;
+  --inner-padding-end: 12px;
+}
+
+ion-list {
+  background: transparent;
+}
+
+/* --- Segment (pestañas tipo comunidad/administración) con fondo tipo cápsula --- */
+ion-segment {
+  --background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--ios-radius-pill);
+  padding: 4px;
+}
+
+ion-segment-button {
+  --border-radius: var(--ios-radius-pill);
+  --indicator-color: var(--ion-color-light);
+  min-height: 36px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* --- FAB flotante con sombra pronunciada tipo iOS --- */
+ion-fab-button {
+  --box-shadow: var(--ios-shadow-lg);
+}
+
+/* --- Modales con esquinas redondeadas arriba, tipo "sheet" de iOS --- */
+ion-modal {
+  --border-radius: var(--ios-radius-lg) var(--ios-radius-lg) 0 0;
+}
+
+/* --- Inputs redondeados --- */
+ion-input,
+ion-textarea,
+ion-select {
+  --border-radius: var(--ios-radius-md);
+  --background: rgba(0, 0, 0, 0.04);
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+/* --- Avatares con anillo sutil --- */
+ion-avatar {
+  border: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+/* --- Refresher con estilo suave --- */
+ion-refresher-content {
+  --ion-color-primary: var(--ion-color-primary);
+}

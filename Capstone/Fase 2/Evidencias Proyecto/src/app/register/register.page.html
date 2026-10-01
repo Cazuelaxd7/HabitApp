@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-hero">
+    <div class="login-logo">🏠</div>
+    <h1>Crear cuenta</h1>
+    <p>Únete a tu comunidad en HabitApp.</p>
+  </div>
+
+  <div class="login-sheet">
+    <form (ngSubmit)="onSubmit()">
+      <div class="hb-field">
+        <label>Nombre completo</label>
+        <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+      </div>
+
+      <div class="hb-field">
+        <label>Correo electrónico</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required />
+      </div>
+
+      <div class="hb-field">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required />
+      </div>
+
+      <div class="hb-field">
+        <label>Confirmar contraseña</label>
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" autocomplete="new-password" required />
+      </div>
+
+      <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+
+      <button class="primary-button" type="submit" [disabled]="cargando">
+        {{ cargando ? 'Creando cuenta...' : 'Crear cuenta' }}
+      </button>
+    </form>
+
+    <div class="login-divider"><span>o</span></div>
+
+    <p class="login-register-text">
+      ¿Ya tienes cuenta?
+      <button class="text-button" type="button" (click)="goToLogin()">Inicia sesión</button>
+    </p>
+  </div>
+</ion-content>

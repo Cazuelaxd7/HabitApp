@@ -1,69 +1,91 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-    IonContent, IonItem, IonLabel, IonInput, IonButton, IonText
-} from '@ionic/angular';
+import { IonContent, ToastController } from '@ionic/angular';
 import { AuthService } from '../core/auth.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.page.html',
-    styleUrls: ['./login.page.scss'],
-    standalone: true,
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        IonContent, IonItem, IonLabel, IonInput, IonButton, IonText
-    ]
+  selector: 'app-login',
+  standalone: true,
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+  imports: [CommonModule, FormsModule, IonContent],
 })
 export class LoginPage {
-    form: FormGroup;
-    errorMessage = '';
-    loading = false;
+  email = '';
+  password = '';
+  cargando = false;
+  showPassword = false;
+  errorMessage = '';
 
-    constructor(
-        private fb: FormBuilder,
-        private authService: AuthService,
-        private router: Router
-    ) {
-        this.form = this.fb.group({
-            email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toastCtrl: ToastController
+  ) {}
+
+  async onSubmit() {
+    this.errorMessage = '';
+    if (!this.email.trim() || !this.password.trim()) {
+      this.errorMessage = 'Completa tu correo y contraseña.';
+      return;
     }
-
-    async onSubmit() {
-        if (this.form.invalid) {
-            this.form.markAllAsTouched();
-            return;
-        }
-
-        this.errorMessage = '';
-        this.loading = true;
-        const { email, password } = this.form.value;
-
-        try {
-            await this.authService.login(email, password);
-            this.router.navigateByUrl('/home');
-        } catch (err: any) {
-            this.errorMessage = this.mapError(err.code);
-        } finally {
-            this.loading = false;
-        }
+    this.cargando = true;
+    try {
+      await this.authService.login(this.email.trim(), this.password);
+      this.router.navigateByUrl('/tabs/home');
+    } catch (error: any) {
+      this.errorMessage = this.mapFirebaseError(error?.code);
+    } finally {
+      this.cargando = false;
     }
+  }
 
-    private mapError(code: string): string {
-        switch (code) {
-            case 'auth/invalid-email':
-                return 'El correo ingresado no es válido.';
-            case 'auth/user-not-found':
-            case 'auth/wrong-password':
-            case 'auth/invalid-credential':
-                return 'Correo o contraseña incorrectos.';
-            default:
-                return 'Ocurrió un error al iniciar sesión. Intenta de nuevo.';
-        }
+  private mapFirebaseError(code: string): string {
+    switch (code) {
+      case 'auth/invalid-email':
+        return 'El correo ingresado no es válido.';
+      case 'auth/user-not-found':
+      case 'auth/wrong-password':
+      case 'auth/invalid-credential':
+        return 'Correo o contraseña incorrectos.';
+      case 'auth/too-many-requests':
+        return 'Demasiados intentos. Intenta más tarde.';
+      default:
+        return 'No se pudo iniciar sesión. Intenta nuevamente.';
     }
+  }
+
+  async onForgotPassword() {
+    if (!this.email.trim()) {
+      const toast = await this.toastCtrl.create({
+        message: 'Ingresa tu correo primero para recuperar tu contraseña.',
+        duration: 2000,
+        color: 'warning',
+      });
+      await toast.present();
+      return;
+    }
+    try {
+      await this.authService.resetPassword(this.email.trim());
+      const toast = await this.toastCtrl.create({
+        message: 'Te enviamos un correo para restablecer tu contraseña.',
+        duration: 2500,
+        color: 'success',
+      });
+      await toast.present();
+    } catch {
+      const toast = await this.toastCtrl.create({
+        message: 'No pudimos enviar el correo de recuperación.',
+        duration: 2200,
+        color: 'danger',
+      });
+      await toast.present();
+    }
+  }
+
+  goToRegister() {
+    this.router.navigateByUrl('/register');
+  }
 }

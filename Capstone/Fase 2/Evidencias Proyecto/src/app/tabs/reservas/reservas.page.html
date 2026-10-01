@@ -1,0 +1,179 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <header class="page-header">
+    <span class="eyebrow">ESPACIOS COMUNES</span>
+    <h1>Reservas</h1>
+    <p>Selecciona un día y reserva un espacio disponible.</p>
+  </header>
+
+  <!-- Calendario semanal -->
+  <div class="reservation-calendar">
+    <div class="calendar-header">
+      <button class="calendar-arrow" type="button" (click)="semanaAnterior()">‹</button>
+      <div class="calendar-month">{{ nombreMesAnio }}</div>
+      <button class="calendar-arrow" type="button" (click)="semanaSiguiente()">›</button>
+    </div>
+
+    <div class="date-selector">
+      <button
+        *ngFor="let dia of diasCalendario"
+        type="button"
+        class="date-item"
+        [class.selected]="dia.fechaStr === diasCalendario[0].fechaStr && dia.fecha.getTime() === selectedDate.setHours(0,0,0,0) || dia.fecha.toDateString() === selectedDate.toDateString()"
+        [class.today]="dia.esHoy"
+        [class.has-reservation]="dia.tieneReserva"
+        [disabled]="dia.esPasado"
+        (click)="seleccionarDia(dia)"
+      >
+        <span class="date-weekday">{{ dia.weekday }}</span>
+        <span class="date-number">{{ dia.numero }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Espacios disponibles -->
+  <section class="inner-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">ESPACIOS</span>
+        <h2>Disponibles</h2>
+      </div>
+      <span class="selected-date-label">{{ fechaSeleccionadaLegible }}</span>
+    </div>
+
+    <div class="spaces-list">
+      <article class="space-card" *ngFor="let card of espaciosCards">
+        <div class="space-image" [class.quincho]="card.tipo === 'quincho'" [class.salon]="card.tipo === 'salon'" [class.court]="card.tipo === 'court'">
+          {{ card.icono }}
+        </div>
+
+        <div class="space-info">
+          <div class="space-title-row">
+            <div>
+              <h2>{{ card.nombre }}</h2>
+              <span>Hasta {{ card.capacidad }} personas</span>
+            </div>
+            <span class="available" [class.full]="card.completo">
+              {{ card.completo ? 'COMPLETO' : 'DISPONIBLE' }}
+            </span>
+          </div>
+
+          <div class="time-slots">
+            <button
+              *ngFor="let h of card.horarios"
+              type="button"
+              class="time-slot"
+              [class.occupied]="!card.disponibles.includes(h)"
+              [disabled]="!card.disponibles.includes(h)"
+            >{{ h.split(' - ')[0] }}</button>
+          </div>
+
+          <button class="primary-button" type="button" (click)="abrirModalReserva(card)">Reservar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Mis reservas -->
+  <section class="inner-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">MIS RESERVAS</span>
+        <h2>Próximas</h2>
+      </div>
+    </div>
+
+    <div class="my-reservation">
+      <div class="empty-state-hb" *ngIf="misReservas.length === 0">
+        <p>No tienes reservas próximas</p>
+      </div>
+
+      <div class="reservation-current" *ngFor="let r of misReservas">
+        <div class="my-reservation-icon">🏡</div>
+        <div>
+          <strong>{{ r.espacio }}</strong>
+          <span>{{ formatFechaLarga(r.fecha) }}</span>
+          <span>{{ r.horario }}</span>
+        </div>
+        <button class="reservation-detail" type="button" (click)="abrirDetalle(r)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historial -->
+  <section class="inner-section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">HISTORIAL</span>
+        <h2>Reservas anteriores</h2>
+      </div>
+    </div>
+
+    <div id="reservationHistory">
+      <div class="empty-state-hb" *ngIf="historial.length === 0">
+        <p>No tienes historial de reservas.</p>
+      </div>
+
+      <div class="reservation-history-item" *ngFor="let r of historial">
+        <div class="history-icon">◉</div>
+        <div class="history-info">
+          <strong>{{ r.espacio }}</strong>
+          <span>{{ formatFechaLarga(r.fecha) }}</span>
+          <span>{{ r.horario }}</span>
+        </div>
+        <div class="history-status">
+          <span [style.color]="estadoColor(r.estado)">{{ estadoLabel(r.estado) }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: nueva reserva -->
+  <div class="hb-modal-overlay" *ngIf="modalAbierto === 'nueva'" (click)="cerrarModal()">
+    <div class="hb-modal-sheet" (click)="$event.stopPropagation()">
+      <button class="hb-modal-close" type="button" (click)="cerrarModal()">×</button>
+
+      <h2 style="font-size:19px; margin-bottom:5px;">Reservar {{ espacioModal?.nombre }}</h2>
+      <p style="color:#6e6e73; font-size:12px; margin-bottom:20px;">{{ fechaSeleccionadaLegible }}</p>
+
+      <span style="display:block; font-size:12px; font-weight:600; margin-bottom:9px;">Selecciona un horario</span>
+
+      <div class="modal-time-grid">
+        <button
+          *ngFor="let h of espacioModal?.horarios"
+          type="button"
+          class="time-slot reservation-time"
+          [class.selected]="horarioSeleccionadoModal === h"
+          [class.occupied]="estaOcupado(espacioModal!, h)"
+          [disabled]="estaOcupado(espacioModal!, h)"
+          (click)="seleccionarHorarioModal(h)"
+        >
+          <span>{{ h }}</span>
+          <small>{{ estaOcupado(espacioModal!, h) ? 'Ocupado' : 'Disponible' }}</small>
+        </button>
+      </div>
+
+      <button class="primary-button" type="button" (click)="confirmarReserva()">Confirmar reserva</button>
+    </div>
+  </div>
+
+  <!-- MODAL: detalle de reserva -->
+  <div class="hb-modal-overlay" *ngIf="modalAbierto === 'detalle' && reservaDetalle" (click)="cerrarModal()">
+    <div class="hb-modal-sheet" (click)="$event.stopPropagation()">
+      <button class="hb-modal-close" type="button" (click)="cerrarModal()">×</button>
+
+      <h2 style="font-size:19px; margin-bottom:5px;">{{ reservaDetalle?.espacio }}</h2>
+      <p style="color:#6e6e73; font-size:12px; margin-bottom:20px;">Detalle de tu reserva</p>
+
+      <div class="detail-box">
+        <div class="detail-row"><span>Fecha</span><strong>{{ formatFechaLarga(reservaDetalle!.fecha) }}</strong></div>
+        <div class="detail-row"><span>Horario</span><strong>{{ reservaDetalle?.horario }}</strong></div>
+        <div class="detail-row"><span>Estado</span><strong style="color:#34a853;">Próxima</strong></div>
+      </div>
+
+      <button class="primary-button" type="button" (click)="repetirDesdeDetalle()">Repetir reserva</button>
+      <button class="cancel-button" type="button" (click)="cancelarDesdeDetalle()">Cancelar reserva</button>
+    </div>
+  </div>
+
+</ion-content>

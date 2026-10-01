@@ -35,3 +35,17 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+/* FIX: ion-tabs a veces deja un ion-router-outlet vacío "fantasma"
+   que tapa toda la pantalla e intercepta los clics.
+   Ver: comportamiento conocido en @ionic/angular con ion-tabs. */
+ion-router-outlet:empty {
+  pointer-events: none !important;
+  display: none !important;
+}
+@import 'app/shared/animations.scss';
+
+@import 'app/shared/ios-style.scss';
+
+@import 'app/shared/ios-style.scss';
+
+@import 'app/shared/habitapp-theme.scss';

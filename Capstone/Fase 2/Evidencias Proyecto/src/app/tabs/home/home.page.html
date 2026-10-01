@@ -1,0 +1,115 @@
+﻿<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="home-content">
+
+    <header class="home-header">
+      <div>
+        <span class="eyebrow">{{ saludo }}</span>
+        <h1>Hola, {{ primerNombre }} &#128075;</h1>
+        <p>Esto es lo m&aacute;s importante de tu comunidad.</p>
+      </div>
+      <button class="profile-avatar" type="button" (click)="logout()">{{ iniciales }}</button>
+    </header>
+
+    <section class="home-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">Resumen</span>
+          <h2>Estado de tu cuenta</h2>
+        </div>
+      </div>
+      <div class="payment-summary">
+        <button class="summary-card primary" type="button" (click)="goToPagos()">
+          <div class="summary-card-top">
+            <span class="summary-icon">$</span>
+            <span class="summary-arrow">&#8250;</span>
+          </div>
+          <span class="summary-title">Gastos comunes</span>
+          <strong>$45.000</strong>
+          <span class="summary-detail">Vence el 30 de septiembre</span>
+        </button>
+        <button class="summary-card warning" type="button" (click)="showMultas()">
+          <div class="summary-card-top">
+            <span class="summary-icon">!</span>
+            <span class="summary-arrow">&#8250;</span>
+          </div>
+          <span class="summary-title">Multas pendientes</span>
+          <strong>$0</strong>
+          <span class="summary-detail">Sin multas registradas</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">Pr&oacute;xima reserva</span>
+          <h2>Tu pr&oacute;xima actividad</h2>
+        </div>
+        <button class="text-button" type="button" (click)="showReservas()">Ver todas</button>
+      </div>
+      <button class="reservation-preview" type="button" (click)="showReservas()">
+        <div class="reservation-preview-icon">&#127969;</div>
+        <div class="reservation-preview-info">
+          @if (proxima) {
+            <strong>{{ proxima.espacio }}</strong>
+            <span>{{ proxima.fecha }}</span>
+            <span>{{ proxima.horario }}</span>
+          } @else {
+            <strong>Sin reservas activas</strong>
+            <span>Reserva un espacio com&uacute;n cuando quieras</span>
+          }
+        </div>
+        <span class="reservation-arrow">&#8250;</span>
+      </button>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">Comunidad</span>
+          <h2>Importante</h2>
+        </div>
+        <button class="text-button" type="button" (click)="goToComunidad()">Ver comunidad</button>
+      </div>
+      <div class="announcement-card" (click)="goToComunidad()">
+        <div class="announcement-icon">!</div>
+        <div class="announcement-content">
+          <span class="announcement-category">Administraci&oacute;n</span>
+          <h3>Corte de agua programado</h3>
+          <p>El martes se realizar&aacute; un corte de agua entre las 10:00 y 13:00 hrs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">Actividad</span>
+          <h2>Lo m&aacute;s reciente</h2>
+        </div>
+        <button class="text-button" type="button" (click)="goToNotificaciones()">Ver avisos</button>
+      </div>
+
+      <div class="activity-list">
+        @if (actividad.length === 0) {
+          <div class="activity-row">
+            <div class="activity-info"><span>Sin actividad reciente</span></div>
+          </div>
+        }
+        @for (a of actividad; track $index) {
+          <div class="activity-row" (click)="goToNotificaciones()">
+            <span class="activity-dot" [class.pago]="a.tipo === 'pago'">
+              {{ a.tipo === 'pago' ? '&#10003;' : '&#9679;' }}
+            </span>
+            <div class="activity-info">
+              <strong>{{ a.titulo }}</strong>
+              <span>{{ a.detalle }}</span>
+            </div>
+            <span class="activity-arrow">&#8250;</span>
+          </div>
+        }
+      </div>
+    </section>
+
+  </div>
+</ion-content>
