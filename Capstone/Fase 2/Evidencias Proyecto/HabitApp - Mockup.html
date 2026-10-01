@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>HabitApp - Mockup interactivo</title>
+<style>
+:root {
+  --bg: #f4f5f7; --card: #ffffff; --text: #16181d; --muted: #6b7280;
+  --primary: #2563eb; --danger: #dc2626; --success: #16a34a; --tertiary: #7c3aed;
+  --border: #e5e7eb; --tabbar: #ffffff;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181d; --card: #1f2229; --text: #f2f3f5; --muted: #9aa0ab;
+    --border: #2c303a; --tabbar: #1c1f26;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #dde1e6; display: flex; justify-content: center; align-items: flex-start;
+  min-height: 100%; padding: 24px 12px;
+}
+.phone {
+  width: 380px; max-width: 100%; background: var(--bg); border-radius: 40px;
+  overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.35); border: 8px solid #111318;
+  position: relative; display: flex; flex-direction: column; height: 780px;
+}
+.statusbar { display:flex; justify-content:space-between; align-items:center; padding:10px 24px 4px; font-size:13px; font-weight:600; color: var(--text); }
+.header { display:flex; align-items:center; justify-content:space-between; padding:10px 18px; border-bottom:1px solid var(--border); background: var(--bg); }
+.header .title { display:flex; align-items:center; gap:8px; font-size:17px; font-weight:700; color: var(--text); }
+.header .icons { display:flex; gap:14px; color: var(--muted); }
+.icon-btn { cursor: pointer; }
+.segment { display:flex; gap:6px; padding:8px 14px; background: var(--bg); border-bottom:1px solid var(--border); }
+.segment button { flex:1; padding:7px 4px; border:none; border-radius:20px; font-size:12.5px; font-weight:600; background:transparent; color: var(--muted); cursor:pointer; }
+.segment button.active { background: var(--text); color: var(--bg); }
+.screen { flex:1; overflow-y:auto; padding: 14px 16px 90px; display:none; }
+.screen.active { display:block; }
+.avatar-circle { width:76px; height:76px; margin:8px auto 10px; border-radius:50%; background:#9aa3af; display:flex; align-items:center; justify-content:center; }
+.avatar-circle svg { width:38px; height:38px; fill:#fff; }
+.profile-name { text-align:center; font-size:19px; font-weight:700; color: var(--text); margin-bottom:12px; }
+.row-item { display:flex; align-items:center; gap:12px; background: var(--card); border-radius:12px; padding:12px 14px; margin-bottom:8px; cursor:pointer; border:1px solid var(--border); }
+.row-item .ic { width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.row-item .txt h4 { margin:0; font-size:14px; color: var(--text); }
+.row-item .txt p { margin:2px 0 0; font-size:12px; color: var(--muted); }
+.row-item .chev { margin-left:auto; color: var(--muted); }
+.section-title { font-size:14px; font-weight:700; color: var(--text); margin:16px 0 8px; }
+.post-card { background: var(--card); border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:12px; }
+.post-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.post-head .av { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:14px; flex-shrink:0; }
+.post-head .meta h4 { margin:0; font-size:13.5px; color: var(--text); }
+.post-head .meta p { margin:1px 0 0; font-size:11.5px; color: var(--muted); }
+.post-title { font-size:14.5px; font-weight:700; color: var(--text); margin:4px 0; }
+.post-body { font-size:13.5px; color: var(--text); opacity:0.85; margin:4px 0 8px; line-height:1.4; }
+.badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+.post-actions { display:flex; align-items:center; gap:18px; margin-top:10px; font-size:12.5px; color: var(--muted); }
+.post-actions span { display:flex; align-items:center; gap:4px; cursor:pointer; }
+.post-actions .share { margin-left:auto; cursor:pointer; }
+.fab { position:absolute; right:18px; bottom:90px; width:52px; height:52px; border-radius:50%; background: var(--primary); color:#fff; border:none; font-size:26px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.3); }
+.tabbar { position:absolute; bottom:0; left:0; right:0; display:flex; background: var(--tabbar); border-top:1px solid var(--border); padding: 8px 0 14px; }
+.tabbar button { flex:1; background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:2px; font-size:10.5px; color: var(--muted); cursor:pointer; }
+.tabbar button.active { color: var(--primary); }
+.tabbar svg { width:22px; height:22px; }
+.placeholder { text-align:center; color: var(--muted); margin-top:60px; font-size:14px; }
+.modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,0.5); display:none; align-items:flex-end; z-index:20; }
+.modal-backdrop.open { display:flex; }
+.modal-sheet { background: var(--card); width:100%; border-radius:20px 20px 0 0; padding:18px; max-height:80%; overflow-y:auto; }
+.modal-sheet h3 { margin:0 0 12px; font-size:16px; color: var(--text); display:flex; justify-content:space-between; align-items:center; }
+.modal-sheet .close { cursor:pointer; color: var(--muted); font-size:20px; }
+.field { margin-bottom:12px; }
+.field label { display:block; font-size:12px; color: var(--muted); margin-bottom:4px; }
+.field select, .field input, .field textarea {
+  width:100%; padding:10px; border-radius:10px; border:1px solid var(--border);
+  background: var(--bg); color: var(--text); font-size:14px; font-family:inherit;
+}
+.submit-btn { width:100%; padding:12px; border:none; border-radius:10px; background: var(--primary); color:#fff; font-weight:700; font-size:14px; cursor:pointer; margin-top:6px; }
+.toast { position:absolute; bottom:100px; left:16px; right:16px; background:#111318; color:#fff; padding:11px 16px; border-radius:10px; font-size:13px; text-align:center; opacity:0; transform:translateY(10px); transition:all .25s; pointer-events:none; z-index:30; }
+.toast.show { opacity:1; transform:translateY(0); }
+.error-text { display:none; color: var(--danger); font-size:12px; margin-top:4px; }
+
+.wrap { display:flex; flex-direction:column; align-items:center; gap:22px; width:100%; }
+.overview-title { color:#1f2430; font-size:15px; font-weight:700; align-self:flex-start; margin-left:6px; }
+.overview-grid { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; max-width:900px; }
+.thumb { width:150px; cursor:pointer; text-align:center; }
+.thumb-frame { width:150px; height:305px; border-radius:16px; border:3px solid #111318; overflow:hidden; background:var(--bg); position:relative; box-shadow:0 6px 18px rgba(0,0,0,0.18); transition:transform .15s, box-shadow .15s; }
+.thumb:hover .thumb-frame { transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.25); }
+.thumb-frame.active-frame { border-color: var(--primary); }
+.thumb-label { margin-top:8px; font-size:12.5px; font-weight:600; color:#374151; }
+.thumb-mini { transform: scale(0.375); transform-origin: top left; width:400px; height:813px; pointer-events:none; }
+
+.res-card { background: var(--card); border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:16px; }
+.res-card h4 { margin:0 0 10px; font-size:14px; color: var(--text); }
+.res-item { display:flex; align-items:center; gap:10px; background: var(--card); border:1px solid var(--border); border-radius:12px; padding:11px 13px; margin-bottom:8px; }
+.res-item .ic2 { width:34px; height:34px; border-radius:8px; background:#dcfce7; color:#16a34a; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.res-item .rtxt { flex:1; }
+.res-item .rtxt h5 { margin:0; font-size:13.5px; color: var(--text); }
+.res-item .rtxt p { margin:2px 0 0; font-size:11.5px; color: var(--muted); }
+.res-cancel { font-size:11.5px; color: var(--danger); cursor:pointer; font-weight:600; }
+
+.notif-item { display:flex; gap:11px; padding:12px 4px; border-bottom:1px solid var(--border); cursor:pointer; }
+.notif-item .nic { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; }
+.notif-item .ntxt h5 { margin:0; font-size:13.5px; color: var(--text); }
+.notif-item .ntxt p { margin:3px 0 0; font-size:12px; color: var(--muted); }
+.notif-item .ntxt span { font-size:11px; color: var(--muted); }
+.notif-item.unread { background: rgba(37,99,235,0.06); }
+.notif-dot { width:8px; height:8px; border-radius:50%; background: var(--primary); margin-top:5px; flex-shrink:0; }
+.mark-read { text-align:right; font-size:12px; color: var(--primary); font-weight:600; cursor:pointer; margin-bottom:6px; }
+
+.back-btn { display:none; cursor:pointer; font-size:19px; color: var(--text); margin-right:6px; }
+.pending-card { background: var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:22px; }
+.pending-head { display:flex; align-items:center; gap:8px; font-size:12.5px; color: var(--muted); margin-bottom:8px; }
+.pending-amount { font-size:28px; font-weight:800; color: var(--text); margin-bottom:4px; }
+.pending-concept { font-size:13.5px; color: var(--muted); margin-bottom:10px; }
+.pending-due { display:flex; align-items:center; gap:6px; font-size:12.5px; color: var(--danger); margin-bottom:16px; }
+.uptodate { text-align:center; padding:34px 0; color: var(--muted); }
+.uptodate .chk { font-size:38px; margin-bottom:8px; }
+.uptodate h3 { margin:0 0 4px; color: var(--text); font-size:16px; }
+.hist-item { display:flex; justify-content:space-between; align-items:center; background: var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px; margin-bottom:8px; }
+.hist-item h5 { margin:0; font-size:13.5px; color: var(--text); }
+.hist-item p { margin:2px 0 0; font-size:11.5px; color: var(--muted); }
+.hist-right { text-align:right; }
+.hist-amount { font-size:13.5px; font-weight:700; color: var(--text); margin-bottom:4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="overview-title">Todas las pantallas — HabitApp</div>
+<div class="overview-grid" id="overviewGrid">
+  <div class="thumb" onclick="goTab('home')"><div class="thumb-frame" id="thumb-home"><div class="thumb-mini">
+    <div class="statusbar"><span>9:41</span></div>
+    <div class="header"><div class="title">HabitApp</div></div>
+    <div class="screen active" style="padding:14px 16px">
+      <div class="avatar-circle"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></div>
+      <div class="profile-name">Diego Flores</div>
+      <div class="row-item"><div class="ic" style="background:#fee2e2;color:#dc2626">⚠</div><div class="txt"><h4>Consultar multas</h4></div></div>
+      <div class="row-item"><div class="ic" style="background:#dbeafe;color:#2563eb">💳</div><div class="txt"><h4>Pagos pendientes</h4></div></div>
+      <div class="row-item"><div class="ic" style="background:#dcfce7;color:#16a34a">📅</div><div class="txt"><h4>Historial de reservas</h4></div></div>
+    </div>
+  </div></div><div class="thumb-label">Inicio</div></div>
+
+  <div class="thumb" onclick="goTab('comunidad')"><div class="thumb-frame" id="thumb-comunidad"><div class="thumb-mini">
+    <div class="statusbar"><span>9:41</span></div>
+    <div class="header"><div class="title">HabitApp</div></div>
+    <div class="segment"><button class="active">Todas</button><button>Comunidad</button><button>Admin.</button></div>
+    <div class="screen active" style="padding:14px 16px">
+      <div class="post-card"><div class="post-title">Corte de agua programado</div><div class="post-body">El viernes 20 habrá corte de agua...</div><span class="badge" style="background:#dbeafe;color:#1d4ed8">Comunidad</span></div>
+      <div class="post-card"><div class="post-title">Venta de entradas</div><div class="post-body">Tengo 2 entradas para Los Bunkers...</div><span class="badge" style="background:#ede9fe;color:#6d28d9">Comunidad</span></div>
+    </div>
+  </div></div><div class="thumb-label">Comunidad</div></div>
+
+  <div class="thumb" onclick="goTab('reservas')"><div class="thumb-frame" id="thumb-reservas"><div class="thumb-mini">
+    <div class="statusbar"><span>9:41</span></div>
+    <div class="header"><div class="title">HabitApp</div></div>
+    <div class="screen active" style="padding:14px 16px">
+      <div class="res-card"><h4>Reservar espacio común</h4>
+        <div class="field"><label>Espacio</label><select><option>Quincho</option></select></div>
+        <div class="field"><label>Fecha</label><input type="date"></div>
+        <button class="submit-btn">Reservar</button>
+      </div>
+      <div class="section-title">Mis reservas</div>
+      <div class="res-item"><div class="ic2">📅</div><div class="rtxt"><h5>Quincho</h5><p>Sáb 27 sept · Tarde</p></div></div>
+    </div>
+  </div></div><div class="thumb-label">Reservas</div></div>
+
+  <div class="thumb" onclick="goTab('notificaciones')"><div class="thumb-frame" id="thumb-notificaciones"><div class="thumb-mini">
+    <div class="statusbar"><span>9:41</span></div>
+    <div class="header"><div class="title">HabitApp</div></div>
+    <div class="screen active" style="padding:14px 16px">
+      <div class="notif-item unread"><div class="notif-dot"></div><div class="nic" style="background:#dbeafe;color:#2563eb">💳</div><div class="ntxt"><h5>Pago recibido</h5><p>Gastos comunes de septiembre</p></div></div>
+      <div class="notif-item unread"><div class="notif-dot"></div><div class="nic" style="background:#ede9fe;color:#6d28d9">💬</div><div class="ntxt"><h5>Nuevo comentario</h5><p>Catalina comentó tu publicación</p></div></div>
+    </div>
+  </div></div><div class="thumb-label">Notificaciones</div></div>
+</div>
+
+<div class="phone">
+  <div class="statusbar"><span>9:41</span><span>●●●●&nbsp;&nbsp;📶&nbsp;&nbsp;🔋</span></div>
+
+  <div class="header" id="header">
+    <div class="title"><span class="back-btn" id="backBtn" onclick="backFromPagos()">‹</span><span id="headerTitle">HabitApp</span></div>
+    <div class="icons" id="headerIcons">⚙️</div>
+  </div>
+  <div class="segment" id="segmentBar" style="display:none">
+    <button class="active" data-seg="todas">Todas</button>
+    <button data-seg="comunidad">Comunidad</button>
+    <button data-seg="administracion">Administración</button>
+  </div>
+
+  <!-- HOME -->
+  <div class="screen active" id="screen-home">
+    <div class="avatar-circle"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></div>
+    <div class="profile-name">Diego Flores</div>
+    <div class="row-item" onclick="toast('3 habitantes: Diego, Camila y Pedro')">
+      <div class="ic" style="background:#e5e7eb"></div>
+      <div class="txt"><h4>3 habitantes en el hogar</h4><p>(opcional)</p></div>
+      <div class="chev">›</div>
+    </div>
+    <div class="row-item" onclick="toast('No tienes multas registradas')">
+      <div class="ic" style="background:#fee2e2;color:#dc2626">⚠</div>
+      <div class="txt"><h4>Consultar multas</h4><p>Revisa si tienes multas pendientes</p></div>
+      <div class="chev">›</div>
+    </div>
+    <div class="row-item" onclick="goToPagos()">
+      <div class="ic" style="background:#dbeafe;color:#2563eb">💳</div>
+      <div class="txt"><h4>Pagos pendientes</h4><p>Revisa tus pagos y estados</p></div>
+      <div class="chev">›</div>
+    </div>
+    <div class="row-item" onclick="toast('Aún no tienes reservas realizadas')">
+      <div class="ic" style="background:#dcfce7;color:#16a34a">📅</div>
+      <div class="txt"><h4>Historial de reservas</h4><p>Revisa tus reservas realizadas</p></div>
+      <div class="chev">›</div>
+    </div>
+    <div class="section-title">Mi comunidad</div>
+    <div class="row-item" onclick="goTab('comunidad')">
+      <div class="ic" style="background:#e5e7eb">📣</div>
+      <div class="txt"><h4>Noticias, actualizaciones y eventos</h4><p>Mantente informado de tu condominio</p></div>
+      <div class="chev">›</div>
+    </div>
+  </div>
+
+  <!-- COMUNIDAD -->
+  <div class="screen" id="screen-comunidad"><div id="postsList"></div></div>
+  <button class="fab" id="fabBtn" style="display:none" onclick="openModal()">+</button>
+
+  <!-- PAGOS -->
+  <div class="screen" id="screen-pagos">
+    <div id="pendingBlock"></div>
+    <div class="section-title">Historial de pagos</div>
+    <div id="histList"></div>
+  </div>
+
+  <!-- RESERVAS -->
+  <div class="screen" id="screen-reservas">
+    <div class="res-card">
+      <h4>Reservar espacio común</h4>
+      <div class="field"><label>Espacio</label>
+        <select id="resSpace"><option>Quincho</option><option>Sala multiuso</option><option>Cancha</option></select>
+      </div>
+      <div class="field"><label>Fecha</label><input type="date" id="resDate" />
+        <span class="error-text" id="errDate">Selecciona una fecha</span></div>
+      <div class="field"><label>Horario</label>
+        <select id="resTime"><option value="Mañana 09:00-13:00">Mañana 09:00-13:00</option><option value="Tarde 14:00-18:00">Tarde 14:00-18:00</option><option value="Noche 19:00-23:00">Noche 19:00-23:00</option></select>
+      </div>
+      <button class="submit-btn" onclick="addReserva()">Reservar</button>
+    </div>
+    <div class="section-title">Mis reservas</div>
+    <div id="reservasList"></div>
+  </div>
+
+  <!-- NOTIFICACIONES -->
+  <div class="screen" id="screen-notificaciones">
+    <div class="mark-read" onclick="markAllRead()">Marcar todas como leídas</div>
+    <div id="notifList"></div>
+  </div>
+
+  <div class="tabbar">
+    <button class="active" id="tab-home" onclick="goTab('home')">🏠<span>Inicio</span></button>
+    <button id="tab-comunidad" onclick="goTab('comunidad')">👥<span>Comunidad</span></button>
+    <button id="tab-reservas" onclick="goTab('reservas')">📅<span>Reservas</span></button>
+    <button id="tab-notificaciones" onclick="goTab('notificaciones')">🔔<span>Notif.</span></button>
+  </div>
+
+  <div class="modal-backdrop" id="payModalBackdrop">
+    <div class="modal-sheet">
+      <h3>Pagar gasto común <span class="close" onclick="closePayModal()">✕</span></h3>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:0" id="payModalDesc"></p>
+      <div class="field"><label>Método de pago</label>
+        <select id="payMethod"><option value="Webpay">Webpay</option><option value="Transferencia">Transferencia bancaria</option></select>
+      </div>
+      <button class="submit-btn" onclick="confirmPayment()">Pagar</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-sheet">
+      <h3>Nueva publicación <span class="close" onclick="closeModal()">✕</span></h3>
+      <div class="field"><label>Categoría</label>
+        <select id="newCat"><option value="comunidad">Comunidad</option><option value="administracion">Administración</option></select>
+      </div>
+      <div class="field"><label>Título</label><input id="newTitle" placeholder="Ej: Vendo bicicleta" />
+        <span class="error-text" id="errTitle">Escribe un título</span></div>
+      <div class="field"><label>Descripción</label><textarea id="newBody" rows="4" placeholder="Escribe los detalles..."></textarea>
+        <span class="error-text" id="errBody">Escribe una descripción</span></div>
+      <button class="submit-btn" onclick="submitPost()">Publicar</button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+</div>
+</div>
+
+<script>
+let posts = [
+  {id:1,author:'Administración',color:'#1e293b',icon:'🏢',time:'Hace 2 horas',title:'Corte de agua programado',body:'El viernes 20 de junio habrá corte de agua entre 10:00 y 14:00 hrs por mantención.',tag:'Comunidad',tagBg:'#dbeafe',tagColor:'#1d4ed8',cat:'administracion',likes:8,liked:false,comments:['¿Afecta a todos los edificios?','Gracias por avisar']},
+  {id:2,author:'Catalina Rojas',color:'#f59e0b',icon:'',time:'Hace 4 horas',title:'Venta de entradas - Concierto',body:'Tengo 2 entradas para Los Bunkers este sábado en el Movistar Arena. Si te interesa, avísame.',tag:'Comunidad',tagBg:'#ede9fe',tagColor:'#6d28d9',cat:'comunidad',likes:12,liked:false,comments:['¿Cuánto pides?','¿Siguen disponibles?','Yo estoy interesado']},
+  {id:3,author:'Jardín del Condominio',color:'#16a34a',icon:'🌿',time:'Hace 6 horas',title:'Feria de emprendedores',body:'Este sábado 21 tendremos feria de emprendedores en el patio central. Productos locales y comida.',tag:'Evento',tagBg:'#dcfce7',tagColor:'#15803d',cat:'comunidad',likes:20,liked:false,comments:['Qué buena iniciativa','¡Ahí estaré!']},
+];
+let currentSeg = 'todas';
+
+function renderPosts(){
+  const list = posts.filter(p => currentSeg==='todas' || p.cat===currentSeg);
+  document.getElementById('postsList').innerHTML = list.map(p => `
+    <div class="post-card">
+      <div class="post-head">
+        <div class="av" style="background:${p.color}">${p.icon || p.author[0]}</div>
+        <div class="meta"><h4>${p.author}</h4><p>${p.time}</p></div>
+      </div>
+      <div class="post-title">${p.title}</div>
+      <div class="post-body">${p.body}</div>
+      <span class="badge" style="background:${p.tagBg};color:${p.tagColor}">${p.tag}</span>
+      <div class="post-actions">
+        <span onclick="toggleLike(${p.id})">${p.liked?'❤️':'🤍'} ${p.likes}</span>
+        <span onclick="showComments(${p.id})">💬 ${p.comments.length}</span>
+        <span class="share" onclick="sharePost(${p.id})">🔗</span>
+      </div>
+    </div>`).join('');
+}
+function toggleLike(id){ const p=posts.find(x=>x.id===id); p.liked=!p.liked; p.likes+=p.liked?1:-1; renderPosts(); }
+function showComments(id){ const p=posts.find(x=>x.id===id); toast(p.comments.length?p.comments.join(' · '):'Sin comentarios todavía'); }
+function sharePost(id){ const p=posts.find(x=>x.id===id);
+  navigator.clipboard?.writeText(p.title+'\\n'+p.body).catch(()=>{});
+  toast('Publicación copiada al portapapeles');
+}
+document.getElementById('segmentBar').addEventListener('click', e=>{
+  if(e.target.tagName!=='BUTTON') return;
+  document.querySelectorAll('#segmentBar button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  currentSeg = e.target.dataset.seg;
+  renderPosts();
+});
+
+function openModal(){ document.getElementById('modalBackdrop').classList.add('open'); }
+function closeModal(){ document.getElementById('modalBackdrop').classList.remove('open'); }
+function submitPost(){
+  const title=document.getElementById('newTitle').value.trim();
+  const body=document.getElementById('newBody').value.trim();
+  document.getElementById('errTitle').style.display = title? 'none':'block';
+  document.getElementById('errBody').style.display = body? 'none':'block';
+  if(!title || !body) return;
+  const cat=document.getElementById('newCat').value;
+  posts.unshift({id:Date.now(),author:'Tú',color:'#6366f1',icon:'',time:'Ahora',title,body,
+    tag: cat==='administracion'?'Administración':'Comunidad',
+    tagBg: cat==='administracion'?'#dbeafe':'#ede9fe',
+    tagColor: cat==='administracion'?'#1d4ed8':'#6d28d9',
+    cat, likes:0, liked:false, comments:[]});
+  document.getElementById('newTitle').value='';
+  document.getElementById('newBody').value='';
+  closeModal(); renderPosts();
+  toast('Publicación creada');
+}
+
+let reservas = [
+  {id:1, space:'Quincho', date:'2026-09-27', time:'Tarde 14:00-18:00'},
+];
+function renderReservas(){
+  const el = document.getElementById('reservasList');
+  if(!reservas.length){ el.innerHTML = '<div class="placeholder" style="margin-top:20px">Aún no tienes reservas realizadas</div>'; return; }
+  el.innerHTML = reservas.map(r => `
+    <div class="res-item">
+      <div class="ic2">📅</div>
+      <div class="rtxt"><h5>${r.space}</h5><p>${formatDate(r.date)} · ${r.time}</p></div>
+      <div class="res-cancel" onclick="cancelReserva(${r.id})">Cancelar</div>
+    </div>`).join('');
+}
+function formatDate(d){ if(!d) return 'Sin fecha'; const [y,m,day]=d.split('-'); return day+'/'+m+'/'+y; }
+function addReserva(){
+  const date = document.getElementById('resDate').value;
+  document.getElementById('errDate').style.display = date ? 'none':'block';
+  if(!date) return;
+  const space = document.getElementById('resSpace').value;
+  const time = document.getElementById('resTime').value;
+  reservas.push({id:Date.now(), space, date, time});
+  document.getElementById('resDate').value='';
+  renderReservas();
+  toast('Reserva confirmada');
+}
+function cancelReserva(id){ reservas = reservas.filter(r=>r.id!==id); renderReservas(); toast('Reserva cancelada'); }
+
+let notifs = [
+  {id:1, icon:'💳', bg:'#dbeafe', color:'#2563eb', title:'Pago recibido', body:'Se registró tu pago de gastos comunes de septiembre', time:'Hace 1 hora', unread:true},
+  {id:2, icon:'💬', bg:'#ede9fe', color:'#6d28d9', title:'Nuevo comentario', body:'Catalina Rojas comentó en tu publicación', time:'Hace 3 horas', unread:true},
+  {id:3, icon:'📅', bg:'#dcfce7', color:'#16a34a', title:'Recordatorio de reserva', body:'Tu reserva del Quincho es mañana a las 14:00', time:'Hace 5 horas', unread:true},
+  {id:4, icon:'⚠', bg:'#fee2e2', color:'#dc2626', title:'Corte de agua', body:'Mañana entre 10:00 y 14:00 hrs por mantención', time:'Ayer', unread:false},
+];
+function renderNotifs(){
+  document.getElementById('notifList').innerHTML = notifs.map(n => `
+    <div class="notif-item ${n.unread?'unread':''}" onclick="readNotif(${n.id})">
+      ${n.unread ? '<div class="notif-dot"></div>' : '<div style="width:8px"></div>'}
+      <div class="nic" style="background:${n.bg};color:${n.color}">${n.icon}</div>
+      <div class="ntxt"><h5>${n.title}</h5><p>${n.body}</p><span>${n.time}</span></div>
+    </div>`).join('');
+}
+function readNotif(id){ const n=notifs.find(x=>x.id===id); n.unread=false; renderNotifs(); }
+function markAllRead(){ notifs.forEach(n=>n.unread=false); renderNotifs(); toast('Todas marcadas como leídas'); }
+
+let pendiente = { concepto:'Gastos comunes', mes:'Septiembre 2026', monto:45000, vence:'30 de septiembre' };
+let historial = [
+  { concepto:'Gastos comunes', mes:'Agosto 2026', monto:45000, fecha:'28-08-2026', metodo:'Webpay' },
+  { concepto:'Gastos comunes', mes:'Julio 2026', monto:42000, fecha:'29-07-2026', metodo:'Transferencia' },
+];
+function fmt(n){ return n.toLocaleString('es-CL'); }
+function renderPagos(){
+  document.getElementById('pendingBlock').innerHTML = pendiente ? `
+    <div class="pending-card">
+      <div class="pending-head">💳 Pago pendiente</div>
+      <div class="pending-amount">$${fmt(pendiente.monto)}</div>
+      <div class="pending-concept">${pendiente.concepto} · ${pendiente.mes}</div>
+      <div class="pending-due">⏱ Vence el ${pendiente.vence}</div>
+      <button class="submit-btn" onclick="openPayModal()">Pagar ahora</button>
+    </div>` : `
+    <div class="uptodate"><div class="chk">✅</div><h3>Estás al día</h3><p>No tienes pagos pendientes por el momento.</p></div>`;
+  document.getElementById('histList').innerHTML = historial.map(h => `
+    <div class="hist-item">
+      <div><h5>${h.concepto}</h5><p>${h.mes} · ${h.metodo}</p></div>
+      <div class="hist-right"><div class="hist-amount">$${fmt(h.monto)}</div><span class="badge" style="background:#dcfce7;color:#15803d">${h.fecha}</span></div>
+    </div>`).join('');
+}
+function openPayModal(){
+  document.getElementById('payModalDesc').textContent = `Vas a pagar $${fmt(pendiente.monto)} correspondiente a ${pendiente.mes}.`;
+  document.getElementById('payModalBackdrop').classList.add('open');
+}
+function closePayModal(){ document.getElementById('payModalBackdrop').classList.remove('open'); }
+function confirmPayment(){
+  const metodo = document.getElementById('payMethod').value;
+  historial.unshift({ concepto:pendiente.concepto, mes:pendiente.mes, monto:pendiente.monto, fecha:'Hoy', metodo });
+  pendiente = null;
+  closePayModal(); renderPagos();
+  toast('Pago realizado con éxito');
+}
+function goToPagos(){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-pagos').classList.add('active');
+  document.getElementById('headerTitle').textContent = 'Pagos';
+  document.getElementById('backBtn').style.display = 'inline';
+  document.getElementById('headerIcons').style.display = 'none';
+  document.getElementById('fabBtn').style.display = 'none';
+  document.getElementById('segmentBar').style.display = 'none';
+  document.querySelector('.tabbar').style.display = 'none';
+}
+function backFromPagos(){
+  document.getElementById('headerTitle').textContent = 'HabitApp';
+  document.getElementById('backBtn').style.display = 'none';
+  document.getElementById('headerIcons').style.display = 'flex';
+  document.querySelector('.tabbar').style.display = 'flex';
+  goTab('home');
+}
+
+function goTab(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  document.querySelectorAll('.tabbar button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  document.getElementById('fabBtn').style.display = name==='comunidad' ? 'flex':'none';
+  document.getElementById('segmentBar').style.display = name==='comunidad' ? 'flex':'none';
+  document.getElementById('headerIcons').textContent = name==='home' ? '⚙️' : (name==='comunidad' ? '🔍 🔔' : '');
+  document.querySelectorAll('.thumb-frame').forEach(f=>f.classList.remove('active-frame'));
+  const t = document.getElementById('thumb-'+name); if(t) t.classList.add('active-frame');
+  window.scrollTo({top: document.querySelector('.phone').offsetTop - 20, behavior:'smooth'});
+}
+renderReservas();
+renderNotifs();
+renderPagos();
+let toastTimer;
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'), 2200);
+}
+renderPosts();
+</script>
+</body>
+</html>
