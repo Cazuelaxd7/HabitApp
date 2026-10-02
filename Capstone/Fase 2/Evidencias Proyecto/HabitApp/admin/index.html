@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HabitApp — Administración</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-logo">H</div>
+
+                <div>
+                    <strong>HabitApp</strong>
+                    <span>Administración</span>
+                </div>
+            </div>
+
+
+            <nav class="main-menu">
+
+                <button class="menu-item active" data-screen="dashboard">
+                    <span class="menu-icon">⌂</span>
+                    <span>Dashboard</span>
+                </button>
+
+                <button class="menu-item" data-screen="residents">
+                    <span class="menu-icon">♙</span>
+                    <span>Residentes</span>
+                </button>
+
+                <button class="menu-item" data-screen="payments">
+                    <span class="menu-icon">$</span>
+                    <span>Gastos comunes</span>
+                </button>
+
+                <button class="menu-item" data-screen="fines">
+                    <span class="menu-icon">!</span>
+                    <span>Multas</span>
+                </button>
+
+                <button class="menu-item" data-screen="reservations">
+                    <span class="menu-icon">□</span>
+                    <span>Reservas</span>
+                </button>
+
+                <button class="menu-item" data-screen="community">
+                    <span class="menu-icon">☷</span>
+                    <span>Comunidad</span>
+                </button>
+
+                <button class="menu-item" data-screen="notices">
+                    <span class="menu-icon">◉</span>
+                    <span>Avisos</span>
+                </button>
+
+                <button class="menu-item" data-screen="reports">
+                    <span class="menu-icon">▥</span>
+                    <span>Reportes</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button class="menu-item" data-screen="settings">
+                    <span class="menu-icon">⚙</span>
+                    <span>Configuración</span>
+                </button>
+
+                <button class="menu-item logout-button" id="logoutButton">
+                    <span class="menu-icon">↪</span>
+                    <span>Cerrar sesión</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+        ========================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="mobile-menu-button" id="mobileMenuButton">
+                    ☰
+                </div>
+
+                <div class="topbar-search">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="globalSearch"
+                        placeholder="Buscar en HabitApp..."
+                    >
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button class="notification-button" id="notificationButton">
+                        🔔
+                        <span class="notification-dot"></span>
+                    </button>
+
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+                            AD
+                        </div>
+
+                        <div class="admin-profile-info">
+                            <strong>Administrador</strong>
+                            <span>Condominio HabitApp</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 DASHBOARD
+            ====================================== -->
+
+            <section class="screen active" id="screen-dashboard">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">RESUMEN GENERAL</span>
+
+                        <h1>Buenos días, Administrador 👋</h1>
+
+                        <p>
+                            Aquí tienes un resumen de la actividad del condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" id="quickActionButton">
+                        + Nueva acción
+                    </button>
+
+                </div>
+
+
+                <!-- STAT CARDS -->
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon residents-icon">
+                            ♙
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Residentes</span>
+                            <strong>124</strong>
+                            <small>118 activos</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon payments-icon">
+                            $
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Recaudación</span>
+                            <strong>86%</strong>
+                            <small>Septiembre 2026</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon fines-icon">
+                            !
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Multas pendientes</span>
+                            <strong>7</strong>
+                            <small>Por gestionar</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon reservations-icon">
+                            □
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Reservas hoy</span>
+                            <strong>12</strong>
+                            <small>Espacios comunes</small>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MAIN DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- PAYMENTS -->
+
+                    <article class="panel payments-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="eyebrow">GASTOS COMUNES</span>
+                                <h2>Estado de pagos</h2>
+                            </div>
+
+                            <button
+                                class="text-button"
+                                data-screen-link="payments"
+                            >
+                                Ver detalle
+                            </button>
+
+                        </div>
+
+
+                        <div class="payment-summary">
+
+                            <div class="payment-total">
+                                <span>Total recaudado</span>
+                                <strong>$8.970.000</strong>
+                            </div>
+
+                            <div class="payment-progress">
+
+                                <div class="progress-header">
+                                    <span>Recaudación mensual</span>
+                                    <strong>86%</strong>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <div
+                                        class="progress-fill"
+                                        style="width: 86%;"
+                                    ></div>
+                                </div>
+
+                                <div class="progress-footer">
+                                    <span>Pagado: $8.970.000</span>
+                                    <span>Pendiente: $1.480.000</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-mini-grid">
+
+                            <div>
+                                <span>Pagados</span>
+                                <strong>107</strong>
+                            </div>
+
+                            <div>
+                                <span>Pendientes</span>
+                                <strong>17</strong>
+                            </div>
+
+                            <div>
+                                <span>Vencidos</span>
+                                <strong>5</strong>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY -->
+
+                    <article class="panel activity-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="eyebrow">ACTIVIDAD</span>
+                                <h2>Actividad reciente</h2>
+                            </div>
+
+                            <button class="text-button">
+                                Ver todo
+                            </button>
+
+                        </div>
+
+
+                        <div class="activity-list">
+
+                            <div class="activity-item">
+
+                                <div class="activity-avatar payment-avatar">
+                                    $
+                                </div>
+
+                                <div class="activity-text">
+                                    <strong>Pago recibido</strong>
+                                    <span>
+                                        Diego Flores realizó el pago de gastos comunes.
+                                    </span>
+                                </div>
+
+                                <small>Hace 10 min</small>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-avatar reservation-avatar">
+                                    □
+                                </div>
+
+                                <div class="activity-text">
+                                    <strong>Nueva reserva</strong>
+                                    <span>
+                                        Se reservó el Quincho 2.
+                                    </span>
+                                </div>
+
+                                <small>Hace 32 min</small>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-avatar community-avatar">
+                                    ☷
+                                </div>
+
+                                <div class="activity-text">
+                                    <strong>Nueva publicación</strong>
+                                    <span>
+                                        Catalina Rojas publicó en Comunidad.
+                                    </span>
+                                </div>
+
+                                <small>Hace 1 h</small>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-avatar fine-avatar">
+                                    !
+                                </div>
+
+                                <div class="activity-text">
+                                    <strong>Nueva multa</strong>
+                                    <span>
+                                        Se registró una multa pendiente.
+                                    </span>
+                                </div>
+
+                                <small>Hace 2 h</small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- BOTTOM GRID -->
+
+                <div class="dashboard-bottom-grid">
+
+
+                    <!-- RESERVATIONS -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="eyebrow">RESERVAS</span>
+                                <h2>Próximas reservas</h2>
+                            </div>
+
+                            <button
+                                class="text-button"
+                                data-screen-link="reservations"
+                            >
+                                Ver calendario
+                            </button>
+
+                        </div>
+
+
+                        <div class="reservation-list">
+
+                            <div class="admin-reservation">
+
+                                <div class="reservation-date">
+                                    <strong>27</strong>
+                                    <span>SEP</span>
+                                </div>
+
+                                <div class="reservation-info">
+                                    <strong>Quincho 2</strong>
+                                    <span>Diego Flores · 18:00 - 21:00</span>
+                                </div>
+
+                                <span class="status-badge confirmed">
+                                    Confirmada
+                                </span>
+
+                            </div>
+
+
+                            <div class="admin-reservation">
+
+                                <div class="reservation-date">
+                                    <strong>28</strong>
+                                    <span>SEP</span>
+                                </div>
+
+                                <div class="reservation-info">
+                                    <strong>Cancha</strong>
+                                    <span>Matías Soto · 15:00 - 16:00</span>
+                                </div>
+
+                                <span class="status-badge confirmed">
+                                    Confirmada
+                                </span>
+
+                            </div>
+
+
+                            <div class="admin-reservation">
+
+                                <div class="reservation-date">
+                                    <strong>29</strong>
+                                    <span>SEP</span>
+                                </div>
+
+                                <div class="reservation-info">
+                                    <strong>Salón Multiuso 1</strong>
+                                    <span>Catalina Rojas · 19:00 - 20:00</span>
+                                </div>
+
+                                <span class="status-badge pending">
+                                    Pendiente
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANNOUNCEMENTS -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="eyebrow">COMUNIDAD</span>
+                                <h2>Avisos importantes</h2>
+                            </div>
+
+                            <button
+                                class="text-button"
+                                data-screen-link="notices"
+                            >
+                                Gestionar
+                            </button>
+
+                        </div>
+
+
+                        <div class="notice-list">
+
+                            <div class="notice-item">
+
+                                <div class="notice-icon">
+                                    !
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        Corte de agua programado
+                                    </strong>
+
+                                    <span>
+                                        Martes · 10:00 a 13:00 hrs.
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="notice-item">
+
+                                <div class="notice-icon">
+                                    ◉
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        Feria de emprendedores
+                                    </strong>
+
+                                    <span>
+                                        Sábado · Salón Multiuso.
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="notice-item">
+
+                                <div class="notice-icon">
+                                    $
+                                </div>
+
+                                <div>
+                                    <strong>
+                                        Cierre de pagos
+                                    </strong>
+
+                                    <span>
+                                        Recuerda revisar los pagos pendientes.
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 RESIDENTES
+            ====================================== -->
+
+            <section class="screen" id="screen-residents">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">GESTIÓN</span>
+                        <h1>Residentes</h1>
+                        <p>
+                            Consulta y administra los residentes del condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        + Nuevo residente
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <div class="table-search">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                placeholder="Buscar residente..."
+                            >
+                        </div>
+
+                        <select>
+                            <option>Todos los estados</option>
+                            <option>Activo</option>
+                            <option>Pendiente</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Residente</th>
+                                    <th>Departamento</th>
+                                    <th>Estado</th>
+                                    <th>Gastos comunes</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <div class="resident-cell">
+                                            <div class="table-avatar">DF</div>
+                                            <div>
+                                                <strong>Diego Flores</strong>
+                                                <span>diego@habitapp.cl</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>Torre B · 704</td>
+
+                                    <td>
+                                        <span class="status-badge confirmed">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="paid-text">Pagado</span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-action">
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="resident-cell">
+                                            <div class="table-avatar">CR</div>
+                                            <div>
+                                                <strong>Catalina Rojas</strong>
+                                                <span>catalina@habitapp.cl</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>Torre A · 302</td>
+
+                                    <td>
+                                        <span class="status-badge confirmed">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="pending-text">
+                                            Pendiente
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-action">
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="resident-cell">
+                                            <div class="table-avatar">MS</div>
+                                            <div>
+                                                <strong>Matías Soto</strong>
+                                                <span>matias@habitapp.cl</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>Torre B · 502</td>
+
+                                    <td>
+                                        <span class="status-badge confirmed">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span class="paid-text">Pagado</span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-action">
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 GASTOS COMUNES
+            ====================================== -->
+
+            <section class="screen" id="screen-payments">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">FINANZAS</span>
+                        <h1>Gastos comunes</h1>
+                        <p>
+                            Controla los pagos y la recaudación del condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        + Registrar cobro
+                    </button>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-icon payments-icon">$</div>
+                        <div class="stat-content">
+                            <span>Total facturado</span>
+                            <strong>$10.450.000</strong>
+                            <small>Septiembre 2026</small>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon payments-icon">$</div>
+                        <div class="stat-content">
+                            <span>Total pagado</span>
+                            <strong>$8.970.000</strong>
+                            <small>86% recaudado</small>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon fines-icon">!</div>
+                        <div class="stat-content">
+                            <span>Pendiente</span>
+                            <strong>$1.480.000</strong>
+                            <small>17 residentes</small>
+                        </div>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="eyebrow">DETALLE</span>
+                            <h2>Estado de residentes</h2>
+                        </div>
+
+                        <button class="text-button">
+                            Exportar
+                        </button>
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Residente</th>
+                                    <th>Departamento</th>
+                                    <th>Monto</th>
+                                    <th>Fecha de pago</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Diego Flores</td>
+                                    <td>B-704</td>
+                                    <td>$84.500</td>
+                                    <td>25 Sep 2026</td>
+                                    <td>
+                                        <span class="status-badge confirmed">
+                                            Pagado
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Catalina Rojas</td>
+                                    <td>A-302</td>
+                                    <td>$91.200</td>
+                                    <td>—</td>
+                                    <td>
+                                        <span class="status-badge pending">
+                                            Pendiente
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 MULTAS
+            ====================================== -->
+
+            <section class="screen" id="screen-fines">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">CONTROL</span>
+                        <h1>Multas</h1>
+                        <p>
+                            Gestiona las multas registradas en el condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        + Nueva multa
+                    </button>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="eyebrow">REGISTROS</span>
+                            <h2>Multas pendientes</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Residente</th>
+                                    <th>Motivo</th>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Diego Flores</td>
+                                    <td>Uso indebido de estacionamiento</td>
+                                    <td>18 Sep 2026</td>
+                                    <td>$15.000</td>
+                                    <td>
+                                        <span class="status-badge pending">
+                                            Pendiente
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="table-action">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Matías Soto</td>
+                                    <td>Uso fuera de horario</td>
+                                    <td>16 Sep 2026</td>
+                                    <td>$20.000</td>
+                                    <td>
+                                        <span class="status-badge pending">
+                                            Pendiente
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button class="table-action">
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 RESERVAS
+            ====================================== -->
+
+            <section class="screen" id="screen-reservations">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">ESPACIOS COMUNES</span>
+                        <h1>Reservas</h1>
+                        <p>
+                            Visualiza y administra las reservas del condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        Ver calendario
+                    </button>
+
+                </div>
+
+
+                <div class="spaces-grid">
+
+                    <article class="space-admin-card">
+                        <div class="space-admin-icon">♨</div>
+                        <strong>Quincho 1</strong>
+                        <span>20 personas</span>
+                        <small>4 reservas hoy</small>
+                    </article>
+
+                    <article class="space-admin-card">
+                        <div class="space-admin-icon">♨</div>
+                        <strong>Quincho 2</strong>
+                        <span>20 personas</span>
+                        <small>3 reservas hoy</small>
+                    </article>
+
+                    <article class="space-admin-card">
+                        <div class="space-admin-icon">▣</div>
+                        <strong>Salón Multiuso 1</strong>
+                        <span>30 personas</span>
+                        <small>2 reservas hoy</small>
+                    </article>
+
+                    <article class="space-admin-card">
+                        <div class="space-admin-icon">▣</div>
+                        <strong>Salón Multiuso 2</strong>
+                        <span>40 personas</span>
+                        <small>1 reserva hoy</small>
+                    </article>
+
+                    <article class="space-admin-card">
+                        <div class="space-admin-icon">○</div>
+                        <strong>Cancha</strong>
+                        <span>12 personas</span>
+                        <small>2 reservas hoy</small>
+                    </article>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="eyebrow">AGENDA</span>
+                            <h2>Reservas próximas</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-reservation-list">
+
+                        <div class="admin-reservation">
+
+                            <div class="reservation-date">
+                                <strong>27</strong>
+                                <span>SEP</span>
+                            </div>
+
+                            <div class="reservation-info">
+                                <strong>Quincho 2</strong>
+                                <span>Diego Flores · B-704 · 18:00 - 21:00</span>
+                            </div>
+
+                            <button class="table-action">
+                                Gestionar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 COMUNIDAD
+            ====================================== -->
+
+            <section class="screen" id="screen-community">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">COMUNICACIÓN</span>
+                        <h1>Comunidad</h1>
+                        <p>
+                            Administra las publicaciones y conversaciones.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        + Nueva publicación
+                    </button>
+
+                </div>
+
+
+                <div class="community-admin-grid">
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="eyebrow">PUBLICACIONES</span>
+                                <h2>Actividad reciente</h2>
+                            </div>
+                        </div>
+
+
+                        <div class="admin-post">
+
+                            <div class="post-admin-avatar">
+                                AD
+                            </div>
+
+                            <div class="post-admin-content">
+
+                                <div>
+                                    <strong>Administración</strong>
+                                    <span>Hace 2 horas</span>
+                                </div>
+
+                                <h3>Corte de agua programado</h3>
+
+                                <p>
+                                    Informamos a la comunidad que el martes
+                                    se realizará un corte de agua.
+                                </p>
+
+                                <div class="post-admin-actions">
+                                    <button>Editar</button>
+                                    <button>Eliminar</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-post">
+
+                            <div class="post-admin-avatar">
+                                CR
+                            </div>
+
+                            <div class="post-admin-content">
+
+                                <div>
+                                    <strong>Catalina Rojas</strong>
+                                    <span>Hace 4 horas</span>
+                                </div>
+
+                                <h3>Venta de entradas - Concierto</h3>
+
+                                <p>
+                                    Me quedan dos entradas para el concierto
+                                    del sábado.
+                                </p>
+
+                                <div class="post-admin-actions">
+                                    <button>Ver comentarios</button>
+                                    <button>Eliminar</button>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="panel community-summary">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="eyebrow">RESUMEN</span>
+                                <h2>Actividad</h2>
+                            </div>
+                        </div>
+
+                        <div class="community-stat">
+                            <strong>18</strong>
+                            <span>Publicaciones este mes</span>
+                        </div>
+
+                        <div class="community-stat">
+                            <strong>46</strong>
+                            <span>Comentarios</span>
+                        </div>
+
+                        <div class="community-stat">
+                            <strong>124</strong>
+                            <span>Residentes alcanzados</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 AVISOS
+            ====================================== -->
+
+            <section class="screen" id="screen-notices">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">COMUNICACIONES</span>
+                        <h1>Avisos</h1>
+                        <p>
+                            Envía información importante a los residentes.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        + Crear aviso
+                    </button>
+
+                </div>
+
+
+                <div class="notice-admin-list">
+
+                    <article class="panel notice-admin-card">
+
+                        <div class="notice-icon large">
+                            !
+                        </div>
+
+                        <div class="notice-admin-content">
+
+                            <div class="notice-admin-header">
+                                <div>
+                                    <span class="eyebrow">ADMINISTRACIÓN</span>
+                                    <h2>Corte de agua programado</h2>
+                                </div>
+
+                                <span class="status-badge confirmed">
+                                    Publicado
+                                </span>
+                            </div>
+
+                            <p>
+                                Se realizará un corte de agua el martes
+                                entre las 10:00 y 13:00 hrs.
+                            </p>
+
+                            <small>
+                                Publicado el 27 Sep 2026
+                            </small>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 REPORTES
+            ====================================== -->
+
+            <section class="screen" id="screen-reports">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">ANÁLISIS</span>
+                        <h1>Reportes</h1>
+                        <p>
+                            Revisa indicadores generales del condominio.
+                        </p>
+                    </div>
+
+                    <button class="primary-button">
+                        Exportar reporte
+                    </button>
+
+                </div>
+
+
+                <div class="report-grid">
+
+                    <article class="panel report-card">
+
+                        <span class="eyebrow">
+                            RECAUDACIÓN
+                        </span>
+
+                        <strong>$8.970.000</strong>
+
+                        <p>
+                            Total recaudado durante septiembre.
+                        </p>
+
+                        <div class="report-bar">
+                            <span style="width: 86%;"></span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="panel report-card">
+
+                        <span class="eyebrow">
+                            RESERVAS
+                        </span>
+
+                        <strong>148</strong>
+
+                        <p>
+                            Reservas registradas este mes.
+                        </p>
+
+                        <div class="report-bar">
+                            <span style="width: 72%;"></span>
+                        </div>
+
+                    </article>
+
+
+                    <article class="panel report-card">
+
+                        <span class="eyebrow">
+                            MULTAS
+                        </span>
+
+                        <strong>7</strong>
+
+                        <p>
+                            Multas actualmente pendientes.
+                        </p>
+
+                        <div class="report-bar">
+                            <span style="width: 35%;"></span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 CONFIGURACIÓN
+            ====================================== -->
+
+            <section class="screen" id="screen-settings">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">SISTEMA</span>
+                        <h1>Configuración</h1>
+                        <p>
+                            Configura las preferencias administrativas.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+                    <article class="panel setting-card">
+
+                        <div class="setting-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+                            <strong>Información del condominio</strong>
+                            <span>
+                                Nombre, dirección y datos generales.
+                            </span>
+                        </div>
+
+                        <button class="table-action">
+                            Editar
+                        </button>
+
+                    </article>
+
+
+                    <article class="panel setting-card">
+
+                        <div class="setting-icon">
+                            🔔
+                        </div>
+
+                        <div>
+                            <strong>Notificaciones</strong>
+                            <span>
+                                Gestiona los avisos administrativos.
+                            </span>
+                        </div>
+
+                        <button class="table-action">
+                            Configurar
+                        </button>
+
+                    </article>
+
+
+                    <article class="panel setting-card">
+
+                        <div class="setting-icon">
+                            ♙
+                        </div>
+
+                        <div>
+                            <strong>Usuarios administradores</strong>
+                            <span>
+                                Gestiona los accesos administrativos.
+                            </span>
+                        </div>
+
+                        <button class="table-action">
+                            Gestionar
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/admin.js"></script>
+
+</body>
+</html>

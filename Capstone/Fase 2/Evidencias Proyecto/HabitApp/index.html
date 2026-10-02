@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HabitApp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section class="intro-screen" id="introScreen">
+
+        <div class="intro-content">
+
+            <div class="app-logo">
+                H
+            </div>
+
+            <h1>HabitApp</h1>
+
+            <p>Tu comunidad, más simple.</p>
+
+        </div>
+
+        <div class="intro-footer">
+            Gestión residencial inteligente
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IPHONE
+    ====================================================== -->
+
+    <div class="iphone" id="iphone">
+
+        <div class="dynamic-island">
+            <div class="camera"></div>
+        </div>
+
+
+        <main class="app">
+
+            <!-- STATUS BAR -->
+
+            <div class="status-bar">
+
+                <span class="status-time">
+                    9:41
+                </span>
+
+                <div class="status-icons">
+
+                    <span>●●●</span>
+                    <span>◒</span>
+                    <span>▰</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SCREENS
+            ================================================== -->
+
+            <div class="screen-container">
+
+
+                <!-- =================================================
+                     INICIO
+                ================================================== -->
+
+                <section
+                    id="screen-home"
+                    class="app-screen active"
+                >
+
+                    <div class="screen-content home-content">
+
+                        <header class="home-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    BUENOS DÍAS
+                                </span>
+
+                                <h1>
+                                    Hola, Diego 👋
+                                </h1>
+
+                                <p>
+                                    Esto es lo más importante de tu comunidad.
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="profile-avatar"
+                                data-action="profile"
+                                type="button"
+                            >
+                                DF
+                            </button>
+
+                        </header>
+
+
+                        <!-- RESUMEN -->
+
+                        <section class="home-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        RESUMEN
+                                    </span>
+
+                                    <h2>
+                                        Estado de tu cuenta
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="payment-summary">
+
+                                <button
+                                    class="summary-card primary"
+                                    data-action="payments"
+                                    type="button"
+                                >
+
+                                    <div class="summary-card-top">
+
+                                        <span class="summary-icon">
+                                            $
+                                        </span>
+
+                                        <span class="summary-arrow">
+                                            ›
+                                        </span>
+
+                                    </div>
+
+                                    <span class="summary-title">
+                                        Gastos comunes
+                                    </span>
+
+                                    <strong>
+                                        $84.500
+                                    </strong>
+
+                                    <span class="summary-detail">
+                                        Vence el 30 de septiembre
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="summary-card warning"
+                                    data-action="fines"
+                                    type="button"
+                                >
+
+                                    <div class="summary-card-top">
+
+                                        <span class="summary-icon">
+                                            !
+                                        </span>
+
+                                        <span class="summary-arrow">
+                                            ›
+                                        </span>
+
+                                    </div>
+
+                                    <span class="summary-title">
+                                        Multas pendientes
+                                    </span>
+
+                                    <strong>
+                                        $15.000
+                                    </strong>
+
+                                    <span class="summary-detail">
+                                        1 multa pendiente
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- PRÓXIMA RESERVA -->
+
+                        <section class="home-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        PRÓXIMA RESERVA
+                                    </span>
+
+                                    <h2>
+                                        Tu próxima actividad
+                                    </h2>
+
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-action="reservations"
+                                    type="button"
+                                >
+                                    Ver todas
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                class="reservation-preview"
+                                data-action="reservations"
+                                type="button"
+                            >
+
+                                <div class="reservation-preview-icon">
+                                    🏡
+                                </div>
+
+                                <div class="reservation-preview-info">
+
+                                    <strong>
+                                        Quincho 2
+                                    </strong>
+
+                                    <span>
+                                        Domingo 27 de septiembre
+                                    </span>
+
+                                    <span>
+                                        18:00 - 21:00
+                                    </span>
+
+                                </div>
+
+                                <span class="reservation-arrow">
+                                    ›
+                                </span>
+
+                            </button>
+
+                        </section>
+
+
+                        <!-- AVISO -->
+
+                        <section class="home-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        COMUNIDAD
+                                    </span>
+
+                                    <h2>
+                                        Importante
+                                    </h2>
+
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-action="community"
+                                    type="button"
+                                >
+                                    Ver comunidad
+                                </button>
+
+                            </div>
+
+
+                            <article class="announcement-card">
+
+                                <div class="announcement-icon">
+                                    !
+                                </div>
+
+                                <div class="announcement-content">
+
+                                    <span class="announcement-category">
+                                        ADMINISTRACIÓN
+                                    </span>
+
+                                    <h3>
+                                        Corte de agua programado
+                                    </h3>
+
+                                    <p>
+                                        El martes se realizará un corte de agua
+                                        entre las 10:00 y 13:00 hrs.
+                                    </p>
+
+                                </div>
+
+                            </article>
+
+                        </section>
+
+
+                        <!-- ACTIVIDAD -->
+
+                        <section class="home-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        ACTIVIDAD
+                                    </span>
+
+                                    <h2>
+                                        Lo más reciente
+                                    </h2>
+
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-action="notifications"
+                                    type="button"
+                                >
+                                    Ver avisos
+                                </button>
+
+                            </div>
+
+
+                            <div class="activity-list">
+
+                                <button
+                                    class="activity-item"
+                                    data-action="notifications"
+                                    type="button"
+                                >
+
+                                    <div class="activity-icon success">
+                                        ✓
+                                    </div>
+
+                                    <div class="activity-info">
+
+                                        <strong>
+                                            Pago recibido
+                                        </strong>
+
+                                        <small>
+                                            Tu pago fue registrado correctamente.
+                                        </small>
+
+                                    </div>
+
+                                    <span class="activity-arrow">
+                                        ›
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="activity-item"
+                                    data-action="notifications"
+                                    type="button"
+                                >
+
+                                    <div class="activity-icon blue">
+                                        ●
+                                    </div>
+
+                                    <div class="activity-info">
+
+                                        <strong>
+                                            Nuevo comentario
+                                        </strong>
+
+                                        <small>
+                                            Catalina comentó en una publicación.
+                                        </small>
+
+                                    </div>
+
+                                    <span class="activity-arrow">
+                                        ›
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     COMUNIDAD
+                ================================================== -->
+
+                <section
+                    id="screen-community"
+                    class="app-screen"
+                >
+
+                    <div class="screen-content">
+
+                        <header class="page-header">
+
+                            <span class="eyebrow">
+                                TU COMUNIDAD
+                            </span>
+
+                            <h1>
+                                Comunidad
+                            </h1>
+
+                            <p>
+                                Mantente informado y participa con tus vecinos.
+                            </p>
+
+                        </header>
+
+
+                        <div class="segment-control">
+
+                            <button
+                                class="segment active"
+                                data-filter="all"
+                                type="button"
+                            >
+                                Todas
+                            </button>
+
+                            <button
+                                class="segment"
+                                data-filter="community"
+                                type="button"
+                            >
+                                Comunidad
+                            </button>
+
+                            <button
+                                class="segment"
+                                data-filter="admin"
+                                type="button"
+                            >
+                                Administración
+                            </button>
+
+                            <button
+                                class="segment"
+                                data-filter="event"
+                                type="button"
+                            >
+                                Eventos
+                            </button>
+
+                        </div>
+
+
+                        <div class="community-posts"></div>
+
+
+                        <button
+                            id="createPostButton"
+                            class="floating-action"
+                            type="button"
+                            aria-label="Crear publicación"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     RESERVAS
+                ================================================== -->
+
+                <section
+                    id="screen-reservations"
+                    class="app-screen"
+                >
+
+                    <div class="screen-content">
+
+                        <header class="page-header">
+
+                            <span class="eyebrow">
+                                ESPACIOS COMUNES
+                            </span>
+
+                            <h1>
+                                Reservas
+                            </h1>
+
+                            <p>
+                                Selecciona un día y reserva un espacio disponible.
+                            </p>
+
+                        </header>
+
+
+                        <!-- SELECTOR DE FECHA -->
+
+                        <div class="reservation-calendar">
+
+                            <div class="calendar-header">
+
+                                <button
+                                    id="previousWeek"
+                                    class="calendar-arrow"
+                                    type="button"
+                                    aria-label="Días anteriores"
+                                >
+                                    ‹
+                                </button>
+
+                                <div class="calendar-month">
+                                    SEPTIEMBRE 2026
+                                </div>
+
+                                <button
+                                    id="nextWeek"
+                                    class="calendar-arrow"
+                                    type="button"
+                                    aria-label="Días siguientes"
+                                >
+                                    ›
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                id="dateSelector"
+                                class="date-selector"
+                            >
+                                <!-- JS -->
+                            </div>
+
+                        </div>
+
+
+                        <!-- ESPACIOS -->
+
+                        <section class="inner-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        ESPACIOS
+                                    </span>
+
+                                    <h2>
+                                        Disponibles
+                                    </h2>
+
+                                </div>
+
+                                <span
+                                    id="selectedDateLabel"
+                                    class="selected-date-label"
+                                >
+                                    Domingo 27
+                                </span>
+
+                            </div>
+
+
+                            <div class="spaces-list">
+
+
+                                <!-- QUINCHO 1 -->
+
+                                <article class="space-card">
+
+                                    <div class="space-image quincho">
+                                        🏡
+                                    </div>
+
+                                    <div class="space-info">
+
+                                        <div class="space-title-row">
+
+                                            <div>
+
+                                                <h2>
+                                                    Quincho 1
+                                                </h2>
+
+                                                <span>
+                                                    Hasta 20 personas
+                                                </span>
+
+                                            </div>
+
+                                            <span class="available">
+                                                DISPONIBLE
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="time-slots">
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="12:00 - 13:00"
+                                                type="button"
+                                            >
+                                                12:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="13:00 - 14:00"
+                                                type="button"
+                                            >
+                                                13:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="14:00 - 15:00"
+                                                type="button"
+                                            >
+                                                14:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="15:00 - 16:00"
+                                                type="button"
+                                            >
+                                                15:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="16:00 - 17:00"
+                                                type="button"
+                                            >
+                                                16:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="17:00 - 18:00"
+                                                type="button"
+                                            >
+                                                17:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="18:00 - 19:00"
+                                                type="button"
+                                            >
+                                                18:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="19:00 - 20:00"
+                                                type="button"
+                                            >
+                                                19:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="20:00 - 21:00"
+                                                type="button"
+                                            >
+                                                20:00
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            class="primary-button reserve-space"
+                                            data-space="Quincho 1"
+                                            type="button"
+                                        >
+                                            Reservar
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- QUINCHO 2 -->
+
+                                <article class="space-card">
+
+                                    <div class="space-image quincho">
+                                        🏡
+                                    </div>
+
+                                    <div class="space-info">
+
+                                        <div class="space-title-row">
+
+                                            <div>
+
+                                                <h2>
+                                                    Quincho 2
+                                                </h2>
+
+                                                <span>
+                                                    Hasta 20 personas
+                                                </span>
+
+                                            </div>
+
+                                            <span class="available">
+                                                DISPONIBLE
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="time-slots">
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="12:00 - 13:00"
+                                                type="button"
+                                            >
+                                                12:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="13:00 - 14:00"
+                                                type="button"
+                                            >
+                                                13:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="14:00 - 15:00"
+                                                type="button"
+                                            >
+                                                14:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="15:00 - 16:00"
+                                                type="button"
+                                            >
+                                                15:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="16:00 - 17:00"
+                                                type="button"
+                                            >
+                                                16:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="17:00 - 18:00"
+                                                type="button"
+                                            >
+                                                17:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="18:00 - 19:00"
+                                                type="button"
+                                            >
+                                                18:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="19:00 - 20:00"
+                                                type="button"
+                                            >
+                                                19:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="20:00 - 21:00"
+                                                type="button"
+                                            >
+                                                20:00
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            class="primary-button reserve-space"
+                                            data-space="Quincho 2"
+                                            type="button"
+                                        >
+                                            Reservar
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- SALÓN 1 -->
+
+                                <article class="space-card">
+
+                                    <div class="space-image salon">
+                                        🏢
+                                    </div>
+
+                                    <div class="space-info">
+
+                                        <div class="space-title-row">
+
+                                            <div>
+
+                                                <h2>
+                                                    Salón Multiuso 1
+                                                </h2>
+
+                                                <span>
+                                                    Hasta 30 personas
+                                                </span>
+
+                                            </div>
+
+                                            <span class="available">
+                                                DISPONIBLE
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="time-slots">
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="10:00 - 11:00"
+                                                type="button"
+                                            >
+                                                10:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="11:00 - 12:00"
+                                                type="button"
+                                            >
+                                                11:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="12:00 - 13:00"
+                                                type="button"
+                                            >
+                                                12:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="13:00 - 14:00"
+                                                type="button"
+                                            >
+                                                13:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="14:00 - 15:00"
+                                                type="button"
+                                            >
+                                                14:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="15:00 - 16:00"
+                                                type="button"
+                                            >
+                                                15:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="16:00 - 17:00"
+                                                type="button"
+                                            >
+                                                16:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="17:00 - 18:00"
+                                                type="button"
+                                            >
+                                                17:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="18:00 - 19:00"
+                                                type="button"
+                                            >
+                                                18:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="19:00 - 20:00"
+                                                type="button"
+                                            >
+                                                19:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="20:00 - 21:00"
+                                                type="button"
+                                            >
+                                                20:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="21:00 - 22:00"
+                                                type="button"
+                                            >
+                                                21:00
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            class="primary-button reserve-space"
+                                            data-space="Salón Multiuso 1"
+                                            type="button"
+                                        >
+                                            Reservar
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- SALÓN 2 -->
+
+                                <article class="space-card">
+
+                                    <div class="space-image salon">
+                                        🏢
+                                    </div>
+
+                                    <div class="space-info">
+
+                                        <div class="space-title-row">
+
+                                            <div>
+
+                                                <h2>
+                                                    Salón Multiuso 2
+                                                </h2>
+
+                                                <span>
+                                                    Hasta 40 personas
+                                                </span>
+
+                                            </div>
+
+                                            <span class="available">
+                                                DISPONIBLE
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="time-slots">
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="12:00 - 13:00"
+                                                type="button"
+                                            >
+                                                12:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="13:00 - 14:00"
+                                                type="button"
+                                            >
+                                                13:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="14:00 - 15:00"
+                                                type="button"
+                                            >
+                                                14:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="15:00 - 16:00"
+                                                type="button"
+                                            >
+                                                15:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="16:00 - 17:00"
+                                                type="button"
+                                            >
+                                                16:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="17:00 - 18:00"
+                                                type="button"
+                                            >
+                                                17:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="18:00 - 19:00"
+                                                type="button"
+                                            >
+                                                18:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="19:00 - 20:00"
+                                                type="button"
+                                            >
+                                                19:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="20:00 - 21:00"
+                                                type="button"
+                                            >
+                                                20:00
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            class="primary-button reserve-space"
+                                            data-space="Salón Multiuso 2"
+                                            type="button"
+                                        >
+                                            Reservar
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+
+                                <!-- CANCHA -->
+
+                                <article class="space-card">
+
+                                    <div class="space-image court">
+                                        ⚽
+                                    </div>
+
+                                    <div class="space-info">
+
+                                        <div class="space-title-row">
+
+                                            <div>
+
+                                                <h2>
+                                                    Cancha
+                                                </h2>
+
+                                                <span>
+                                                    Hasta 12 personas
+                                                </span>
+
+                                            </div>
+
+                                            <span class="available">
+                                                DISPONIBLE
+                                            </span>
+
+                                        </div>
+
+
+                                        <div class="time-slots">
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="10:00 - 11:00"
+                                                type="button"
+                                            >
+                                                10:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="11:00 - 12:00"
+                                                type="button"
+                                            >
+                                                11:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="12:00 - 13:00"
+                                                type="button"
+                                            >
+                                                12:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="13:00 - 14:00"
+                                                type="button"
+                                            >
+                                                13:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="14:00 - 15:00"
+                                                type="button"
+                                            >
+                                                14:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="15:00 - 16:00"
+                                                type="button"
+                                            >
+                                                15:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="16:00 - 17:00"
+                                                type="button"
+                                            >
+                                                16:00
+                                            </button>
+
+                                            <button
+                                                class="time-slot"
+                                                data-time="17:00 - 18:00"
+                                                type="button"
+                                            >
+                                                17:00
+                                            </button>
+
+                                        </div>
+
+
+                                        <button
+                                            class="primary-button reserve-space"
+                                            data-space="Cancha"
+                                            type="button"
+                                        >
+                                            Reservar
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+                        </section>
+
+
+                        <!-- =================================================
+                             MIS RESERVAS
+                        ================================================== -->
+
+                        <section class="inner-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        MIS RESERVAS
+                                    </span>
+
+                                    <h2>
+                                        Próximas
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="my-reservation">
+                                <!-- JS -->
+                            </div>
+
+                        </section>
+
+
+                        <!-- =================================================
+                             HISTORIAL DE RESERVAS
+                        ================================================== -->
+
+                        <section class="inner-section">
+
+                            <div class="section-heading">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        HISTORIAL
+                                    </span>
+
+                                    <h2>
+                                        Reservas anteriores
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div id="reservationHistory">
+                                <!-- JS -->
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     NOTIFICACIONES
+                ================================================== -->
+
+                <section
+                    id="screen-notifications"
+                    class="app-screen"
+                >
+
+                    <div class="screen-content">
+
+                        <header class="page-header notifications-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    ACTUALIZACIONES
+                                </span>
+
+                                <h1>
+                                    Avisos
+                                </h1>
+
+                                <p>
+                                    Mantente al día con tu comunidad.
+                                </p>
+
+                            </div>
+
+                            <button
+                                id="markAllRead"
+                                class="text-button"
+                                type="button"
+                            >
+                                Marcar todo leído
+                            </button>
+
+                        </header>
+
+
+                        <div
+                            id="notificationList"
+                            class="notification-list"
+                        >
+                            <!-- JS -->
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PERFIL
+                ================================================== -->
+
+                <section
+                    id="screen-profile"
+                    class="app-screen"
+                >
+
+                    <div class="screen-content profile-content">
+
+                        <header class="page-header">
+
+                            <span class="eyebrow">
+                                MI CUENTA
+                            </span>
+
+                            <h1>
+                                Perfil
+                            </h1>
+
+                        </header>
+
+
+                        <div class="profile-card">
+
+                            <div class="large-avatar">
+                                DF
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Diego Flores
+                                </h2>
+
+                                <span>
+                                    Residente
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <section class="profile-section">
+
+                            <span class="section-label">
+                                INFORMACIÓN
+                            </span>
+
+
+                            <div class="profile-list">
+
+                                <div class="profile-row">
+
+                                    <span>
+                                        Departamento
+                                    </span>
+
+                                    <strong>
+                                        Torre B · 704
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="profile-row">
+
+                                    <span>
+                                        Condominio
+                                    </span>
+
+                                    <strong>
+                                        Condominio HabitApp
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="profile-row">
+
+                                    <span>
+                                        Correo
+                                    </span>
+
+                                    <strong>
+                                        diego@habitapp.cl
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <section class="profile-section">
+
+                            <span class="section-label">
+                                CONFIGURACIÓN
+                            </span>
+
+
+                            <div class="settings-list">
+
+                                <button
+                                    class="settings-row"
+                                    data-action="settings"
+                                    type="button"
+                                >
+
+                                    <span>
+                                        Configuración
+                                    </span>
+
+                                    <span>
+                                        ›
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="settings-row"
+                                    data-action="security"
+                                    type="button"
+                                >
+
+                                    <span>
+                                        Seguridad
+                                    </span>
+
+                                    <span>
+                                        ›
+                                    </span>
+
+                                </button>
+
+
+                                <button
+                                    class="settings-row danger"
+                                    data-action="logout"
+                                    type="button"
+                                >
+
+                                    <span>
+                                        Cerrar sesión
+                                    </span>
+
+                                    <span>
+                                        ›
+                                    </span>
+
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PAGOS
+                ================================================== -->
+
+                <section
+                    id="screen-payments"
+                    class="app-screen secondary-screen"
+                >
+
+                    <div class="screen-content">
+
+                        <button
+                            class="back-button"
+                            data-action="home"
+                            type="button"
+                        >
+                            ‹ Volver
+                        </button>
+
+
+                        <header class="page-header">
+
+                            <span class="eyebrow">
+                                FINANZAS
+                            </span>
+
+                            <h1>
+                                Gastos comunes
+                            </h1>
+
+                            <p>
+                                Revisa y gestiona tus pagos.
+                            </p>
+
+                        </header>
+
+
+                        <div class="total-payment-card">
+
+                            <span>
+                                TOTAL PENDIENTE
+                            </span>
+
+                            <strong>
+                                $84.500
+                            </strong>
+
+                            <small>
+                                Correspondiente a septiembre 2026
+                            </small>
+
+                            <button
+                                id="payCommonExpenses"
+                                class="primary-button"
+                                type="button"
+                            >
+                                Pagar ahora
+                            </button>
+
+                        </div>
+
+
+                        <section class="inner-section">
+
+                            <span class="section-label">
+                                DETALLE
+                            </span>
+
+
+                            <div class="detail-list">
+
+                                <div class="detail-row">
+
+                                    <span>
+                                        Gastos comunes
+                                    </span>
+
+                                    <strong>
+                                        $72.500
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-row">
+
+                                    <span>
+                                        Fondo de reserva
+                                    </span>
+
+                                    <strong>
+                                        $8.000
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-row">
+
+                                    <span>
+                                        Otros cargos
+                                    </span>
+
+                                    <strong>
+                                        $4.000
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+                        <section class="inner-section">
+
+                            <span class="section-label">
+                                HISTORIAL
+                            </span>
+
+
+                            <div class="detail-list">
+
+                                <div class="detail-row">
+
+                                    <span>
+                                        Agosto 2026
+                                    </span>
+
+                                    <strong>
+                                        $81.200
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="detail-row">
+
+                                    <span>
+                                        Julio 2026
+                                    </span>
+
+                                    <strong>
+                                        $79.850
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     MULTAS
+                ================================================== -->
+
+                <section
+                    id="screen-fines"
+                    class="app-screen secondary-screen"
+                >
+
+                    <div class="screen-content">
+
+                        <button
+                            class="back-button"
+                            data-action="home"
+                            type="button"
+                        >
+                            ‹ Volver
+                        </button>
+
+
+                        <header class="page-header">
+
+                            <span class="eyebrow">
+                                ADMINISTRACIÓN
+                            </span>
+
+                            <h1>
+                                Multas
+                            </h1>
+
+                            <p>
+                                Revisa tus multas pendientes.
+                            </p>
+
+                        </header>
+
+
+                        <div class="fine-summary">
+
+                            <span>
+                                PENDIENTE
+                            </span>
+
+                            <strong>
+                                $15.000
+                            </strong>
+
+                            <small>
+                                1 multa pendiente
+                            </small>
+
+                        </div>
+
+
+                        <div class="fine-card">
+
+                            <div class="fine-icon">
+                                !
+                            </div>
+
+                            <div class="fine-info">
+
+                                <span>
+                                    18 SEP 2026
+                                </span>
+
+                                <h2>
+                                    Uso indebido de estacionamiento
+                                </h2>
+
+                                <strong>
+                                    $15.000
+                                </strong>
+
+                            </div>
+
+
+                            <button
+                                id="payFine"
+                                class="primary-button"
+                                type="button"
+                            >
+                                Pagar multa
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 BOTTOM NAVIGATION
+            ================================================== -->
+
+            <nav class="bottom-navigation">
+
+                <button
+                    class="nav-item active"
+                    data-tab="home"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ⌂
+                    </span>
+
+                    <span>
+                        Inicio
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-tab="community"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ◎
+                    </span>
+
+                    <span>
+                        Comunidad
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-tab="reservations"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ▣
+                    </span>
+
+                    <span>
+                        Reservas
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-tab="notifications"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+
+                        ◌
+
+                        <span
+                            id="notificationBadge"
+                            class="notification-badge"
+                        >
+                            2
+                        </span>
+
+                    </span>
+
+                    <span>
+                        Avisos
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-tab="profile"
+                    type="button"
+                >
+
+                    <span class="nav-icon">
+                        ●
+                    </span>
+
+                    <span>
+                        Perfil
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <!-- =================================================
+                 MODAL
+            ================================================== -->
+
+            <div
+                id="modalOverlay"
+                class="modal-overlay"
+            >
+
+                <div
+                    id="modalSheet"
+                    class="modal-sheet"
+                >
+
+                    <button
+                        id="modalClose"
+                        class="modal-close"
+                        type="button"
+                        aria-label="Cerrar"
+                    >
+                        ×
+                    </button>
+
+
+                    <div id="modalContent"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TOAST
+            ================================================== -->
+
+            <div
+                id="toast"
+                class="toast"
+                role="status"
+                aria-live="polite"
+            >
+
+                <span id="toastMessage"></span>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
