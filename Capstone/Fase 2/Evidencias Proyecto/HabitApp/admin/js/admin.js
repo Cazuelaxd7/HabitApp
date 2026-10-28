@@ -4703,6 +4703,35 @@ function addModalStyles() {
     `;
 
 
+
+    style.textContent += `
+      .financial-reports{max-width:1600px;margin:0 auto;color:var(--text,#16181d)}
+      .financial-demo-tag{display:inline-flex;margin-top:10px;padding:6px 10px;border-radius:8px;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:700}
+      .financial-filterbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;margin:-8px 0 20px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;color:#64748b;font-size:12px}
+      .financial-filterbar label{display:flex;align-items:center;gap:10px;color:#334155;font-weight:600}
+      .financial-filterbar select{padding:8px 10px;border:1px solid #dbe3ef;border-radius:9px;background:#fff;color:#334155}
+      .financial-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+      .financial-main-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;margin:18px 0}
+      .financial-panel{min-width:0;margin-bottom:18px}
+      .financial-legend{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:10px;color:#64748b}
+      .financial-dot{width:8px;height:8px;border-radius:50%;display:inline-block}.financial-dot.income{background:#2563eb}.financial-dot.expense{background:#f59e0b}
+      .financial-trend-chart{height:210px;display:flex;align-items:stretch;gap:14px;padding:15px 8px 0}
+      .financial-trend-column{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:9px}
+      .financial-trend-bars{height:175px;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:5px;border-bottom:1px solid #e2e8f0}
+      .financial-trend-bars span{display:block;width:min(22px,36%);min-height:4px;border-radius:5px 5px 0 0;transition:height .25s ease}.income-bar{background:#2563eb}.expense-bar{background:#f59e0b}
+      .financial-trend-column small{font-size:10px;color:#64748b}
+      .financial-balance-strip,.financial-budget-total,.financial-table-foot,.reserve-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;margin-top:14px;border-top:1px solid #edf0f5;font-size:12px;color:#64748b}
+      .financial-balance-strip strong{font-size:17px}.financial-balance-strip .positive{color:#15803d}.financial-balance-strip .negative{color:#b91c1c}
+      .financial-expense-list{display:flex;flex-direction:column;gap:16px}.financial-expense-label{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}.financial-expense-label span{color:#475569}.financial-expense-label strong{font-size:12px;white-space:nowrap}
+      .financial-expense-track,.financial-budget-track,.reserve-progress{height:7px;background:#eef2f7;border-radius:20px;overflow:hidden;margin:8px 0 4px}.financial-expense-track span{display:block;height:100%;border-radius:inherit;background:#2563eb}.financial-expense-item small{font-size:10px;color:#94a3b8}
+      .financial-under-budget{padding:6px 9px;border-radius:8px;background:#ecfdf3;color:#15803d;font-size:11px;white-space:nowrap}
+      .financial-budget-row{margin:15px 0}.financial-budget-row>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px}.financial-budget-row>div:first-child span{color:#475569}.financial-budget-row>div:first-child strong{white-space:nowrap}.financial-budget-row>div:first-child small{font-size:10px;color:#94a3b8;font-weight:500}.financial-budget-track span{display:block;height:100%;background:#16a34a;border-radius:inherit}
+      .reserve-amount{font-size:30px;font-weight:750;letter-spacing:-.8px;margin:18px 0 8px}.reserve-panel p{font-size:12px;line-height:1.6;color:#64748b}.reserve-progress span{display:block;height:100%;background:#7c3aed;border-radius:inherit}.reserve-meta{margin-top:8px;padding-top:0;border-top:0;font-size:11px}.reserve-meta strong{color:#7c3aed}.reserve-note{margin-top:15px;padding:10px 12px;background:#f8fafc;border-radius:9px;font-size:10px;line-height:1.5;color:#64748b}
+      .financial-table-panel{padding-bottom:0}.financial-table-scroll{width:100%;overflow-x:auto}.financial-table{width:100%;border-collapse:collapse;min-width:620px;font-size:12px}.financial-table th{padding:12px 13px;text-align:left;background:#f8fafc;color:#64748b;font-size:10px;font-weight:700;white-space:nowrap}.financial-table td{padding:13px;border-bottom:1px solid #f0f2f5;color:#334155;white-space:nowrap}.financial-table tbody tr:last-child td{border-bottom:0}.financial-table tbody tr:hover{background:#fbfdff}.financial-amount{font-weight:700;text-align:right;color:#0f172a!important}.financial-status{display:inline-flex;padding:5px 8px;border-radius:7px;font-size:10px;font-weight:700}.financial-status.overdue{background:#fef2f2;color:#b91c1c}.financial-status.upcoming{background:#fff7ed;color:#b45309}.financial-empty{text-align:center!important;padding:24px!important;color:#94a3b8!important}.financial-payroll-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.financial-payroll-grid>div{padding:16px;background:#f8fafc;border:1px solid #edf0f5;border-radius:11px}.financial-payroll-grid span,.financial-payroll-grid strong{display:block}.financial-payroll-grid span{margin-bottom:8px;color:#64748b;font-size:11px}.financial-payroll-grid strong{font-size:17px}
+      @media(max-width:1100px){.financial-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.financial-main-grid{grid-template-columns:1fr}}
+      @media(max-width:640px){.financial-reports .extended-reports-header{align-items:flex-start;flex-direction:column}.financial-reports .extended-report-actions{width:100%;flex-wrap:wrap}.financial-filterbar{align-items:flex-start;flex-direction:column}.financial-kpis{grid-template-columns:1fr}.financial-trend-chart{gap:5px;padding-left:0;padding-right:0}.financial-trend-bars{gap:3px}.financial-trend-bars span{width:38%}.financial-legend{flex-wrap:wrap}.financial-payroll-grid{grid-template-columns:1fr}.financial-budget-row>div:first-child{align-items:flex-start;flex-direction:column;gap:5px}}
+    `;
+
     document.head.appendChild(style);
 
 }
@@ -6194,830 +6223,150 @@ function openExtendedCollectionModal() {
 ========================================================= */
 
 function renderExtendedReports() {
-
-    const screen =
-        document.getElementById(
-            "screen-reports"
-        );
-
+    const screen = document.getElementById("screen-reports");
     if (!screen) return;
 
+    const summary = getExtendedFinanceSummary();
+    const reservations = Array.isArray(data.reservations) ? data.reservations : [];
+    const fines = Array.isArray(data.fines) ? data.fines : [];
+    const charges = Array.isArray(data.charges) ? data.charges : [];
+    const payments = Array.isArray(data.payments) ? data.payments : [];
+    const activities = Array.isArray(data.adminActivity) ? data.adminActivity : [];
+    const confirmedReservations = reservations.filter(item => item.status !== "Cancelada");
+    const pendingFines = fines.filter(item => item.status === "Pendiente");
+    const totalFines = pendingFines.reduce((total, fine) => total + Number(fine.amount || 0), 0);
+    const collectionPercentage = summary.billed > 0 ? Math.min(100, Math.round((summary.collected / summary.billed) * 100)) : 0;
 
-    const summary =
-        getExtendedFinanceSummary();
-
-
-    const reservations =
-        data.reservations || [];
-
-    const fines =
-        data.fines || [];
-
-    const charges =
-        data.charges || [];
-
-
-    const confirmedReservations =
-        reservations.filter(
-            item =>
-                item.status !== "Cancelada"
-        );
-
-
-    const cancelledReservations =
-        reservations.filter(
-            item =>
-                item.status === "Cancelada"
-        );
-
-
-    const pendingFines =
-        fines.filter(
-            item =>
-                item.status === "Pendiente"
-        );
-
-
-    const totalFines =
-        pendingFines.reduce(
-            (total, fine) =>
-                total +
-                Number(fine.amount || 0),
-            0
-        );
-
-
-    const collectionPercentage =
-        summary.billed > 0
-            ? Math.round(
-                (
-                    summary.collected /
-                    summary.billed
-                ) * 100
-            )
-            : 0;
-
-
-    const spaces = [
-
-        "Quincho 1",
-        "Quincho 2",
-        "Salón Multiuso 1",
-        "Salón Multiuso 2",
-        "Cancha"
-
+    // Gastos operacionales ficticios para el prototipo; los pagos y cobros existentes se conservan.
+    const expenses = [
+        { category: "Sueldos y cargas", amount: 3200000, budget: 3400000 },
+        { category: "Servicios básicos", amount: 1400000, budget: 1550000 },
+        { category: "Mantención y reparaciones", amount: 1550000, budget: 1800000 },
+        { category: "Aseo y seguridad", amount: 1530000, budget: 1650000 }
     ];
+    const totalExpenses = expenses.reduce((sum, item) => sum + item.amount, 0);
+    const totalBudget = expenses.reduce((sum, item) => sum + item.budget, 0);
+    const supplierDebts = [
+        { supplier: "Ascensores del Sur", concept: "Mantención mensual", due: "2026-10-25", amount: 480000, status: "Vencida" },
+        { supplier: "Servicios de Aseo SpA", concept: "Servicio de octubre", due: "2026-10-30", amount: 520000, status: "Por vencer" },
+        { supplier: "EnerCon Servicios", concept: "Electricidad áreas comunes", due: "2026-11-05", amount: 350000, status: "Por vencer" }
+    ];
+    const supplierDebtTotal = supplierDebts.reduce((sum, item) => sum + item.amount, 0);
+    const reserveFund = 4500000;
+    const balance = summary.collected - totalExpenses;
+    const money = value => extendedMoney(value);
+    const safe = value => extendedEscape(value);
+    const maxExpense = Math.max(...expenses.map(item => item.amount), 1);
 
-
-    const spaceStats =
-        spaces.map(space => ({
-
-            name: space,
-
-            count:
-                reservations.filter(
-                    item =>
-                        item.space === space &&
-                        item.status !== "Cancelada"
-                ).length
-
-        }));
-
-
-    const maxSpace =
-        Math.max(
-            1,
-            ...spaceStats.map(
-                item => item.count
-            )
+    const residentDebts = [];
+    charges.filter(item => item.status !== "Pagado").forEach(item => residentDebts.push({
+        resident: item.resident || "Residente", apartment: item.apartment || "—",
+        concept: item.concept || "Cobro pendiente", amount: Number(item.amount || 0), date: item.date || "—"
+    }));
+    payments.filter(item => item.status !== "Pagado").forEach(item => residentDebts.push({
+        resident: item.resident || "Residente", apartment: item.apartment || "—",
+        concept: "Gastos comunes", amount: Number(item.amount || 0), date: item.date || "—"
+    }));
+    if (!residentDebts.length && Number(summary.pending || 0) > 0) {
+        residentDebts.push(
+            { resident: "Catalina Rojas", apartment: "302", concept: "Gastos comunes", amount: 91200, date: "2026-09-30" },
+            { resident: "Matías Soto", apartment: "504", concept: "Gastos comunes atrasados", amount: Math.max(0, Number(summary.pending || 0) - 91200), date: "2026-09-15" }
         );
-
-
-    const activities =
-        data.adminActivity || [];
-
+    }
+    const residentDebtTotal = residentDebts.reduce((sum, item) => sum + item.amount, 0);
+    const monthTrend = [
+        { label: "May", income: 8100000, expense: 6950000 },
+        { label: "Jun", income: 8450000, expense: 7210000 },
+        { label: "Jul", income: 8720000, expense: 7480000 },
+        { label: "Ago", income: 8890000, expense: 7510000 },
+        { label: "Sep", income: Number(summary.collected || 8970000), expense: totalExpenses },
+        { label: "Oct", income: 9250000, expense: 7680000 }
+    ];
+    const maxTrend = Math.max(...monthTrend.flatMap(item => [item.income, item.expense]), 1);
 
     screen.innerHTML = `
-
-        <div class="extended-reports">
-
-            <div class="extended-reports-header">
-
-                <div>
-
-                    <span class="extended-eyebrow">
-                        ADMINISTRACIÓN
-                    </span>
-
-                    <h1>
-                        Reportes y estadísticas
-                    </h1>
-
-                    <p>
-                        Información general sobre la gestión
-                        financiera y operativa del condominio.
-                    </p>
-
-                </div>
-
-
-                <div class="extended-report-actions">
-
-                    <button
-                        type="button"
-                        id="extendedRefreshReport"
-                        class="extended-secondary-button"
-                    >
-                        ↻ Actualizar
-                    </button>
-
-
-                    <button
-                        type="button"
-                        id="extendedExportReport"
-                        class="extended-primary-button"
-                    >
-                        ↓ Exportar CSV
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- INDICADORES -->
-
-            <div class="extended-report-kpis">
-
-                <div class="extended-report-card blue">
-
-                    <div class="extended-report-icon">
-                        $
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Recaudado
-                        </span>
-
-                        <strong>
-                            ${extendedMoney(
-                                summary.collected
-                            )}
-                        </strong>
-
-                        <small>
-                            ${collectionPercentage}% del total
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="extended-report-card orange">
-
-                    <div class="extended-report-icon">
-                        !
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Pendiente
-                        </span>
-
-                        <strong>
-                            ${extendedMoney(
-                                summary.pending
-                            )}
-                        </strong>
-
-                        <small>
-                            Montos por cobrar
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="extended-report-card purple">
-
-                    <div class="extended-report-icon">
-                        R
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Reservas
-                        </span>
-
-                        <strong>
-                            ${confirmedReservations.length}
-                        </strong>
-
-                        <small>
-                            Reservas confirmadas
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="extended-report-card red">
-
-                    <div class="extended-report-icon">
-                        M
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Multas
-                        </span>
-
-                        <strong>
-                            ${pendingFines.length}
-                        </strong>
-
-                        <small>
-                            ${extendedMoney(
-                                totalFines
-                            )}
-                            pendientes
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRINCIPAL -->
-
-            <div class="extended-report-grid">
-
-                <!-- RECAUDACIÓN -->
-
-                <section class="extended-report-panel">
-
-                    <div class="extended-panel-header">
-
-                        <div>
-
-                            <h2>
-                                Recaudación
-                            </h2>
-
-                            <span>
-                                Estado financiero
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            id="extendedOpenCollection"
-                            class="extended-link-button"
-                        >
-                            Ver detalle
-                        </button>
-
-                    </div>
-
-
-                    <div class="extended-total-box">
-
-                        <div>
-
-                            <span>
-                                Total recaudado
-                            </span>
-
-                            <strong>
-                                ${extendedMoney(
-                                    summary.collected
-                                )}
-                            </strong>
-
-                        </div>
-
-
-                        <div class="extended-percentage">
-                            ${collectionPercentage}%
-                        </div>
-
-                    </div>
-
-
-                    <div class="extended-big-progress">
-
-                        <div
-                            style="width:${Math.min(
-                                collectionPercentage,
-                                100
-                            )}%"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="extended-legend">
-
-                        <div>
-
-                            <i class="paid-dot"></i>
-
-                            <span>
-                                Recaudado
-                            </span>
-
-                            <strong>
-                                ${extendedMoney(
-                                    summary.collected
-                                )}
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <i class="pending-dot"></i>
-
-                            <span>
-                                Pendiente
-                            </span>
-
-                            <strong>
-                                ${extendedMoney(
-                                    summary.pending
-                                )}
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- ESPACIOS -->
-
-                <section class="extended-report-panel">
-
-                    <div class="extended-panel-header">
-
-                        <div>
-
-                            <h2>
-                                Uso de espacios
-                            </h2>
-
-                            <span>
-                                Reservas por área común
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="extended-space-list">
-
-                        ${
-                            spaceStats.map(
-                                space => {
-
-                                    const width =
-                                        Math.round(
-                                            (
-                                                space.count /
-                                                maxSpace
-                                            ) * 100
-                                        );
-
-
-                                    return `
-
-                                        <div class="extended-space-item">
-
-                                            <div>
-
-                                                <span>
-                                                    ${extendedEscape(
-                                                        space.name
-                                                    )}
-                                                </span>
-
-                                                <strong>
-                                                    ${space.count}
-                                                </strong>
-
-                                            </div>
-
-
-                                            <div class="extended-space-track">
-
-                                                <div
-                                                    style="width:${width}%"
-                                                ></div>
-
-                                            </div>
-
-                                        </div>
-
-                                    `;
-
-                                }
-                            ).join("")
-                        }
-
-                    </div>
-
-                </section>
-
-            </div>
-
-
-            <!-- SEGUNDA FILA -->
-
-            <div class="extended-three-grid">
-
-                <section class="extended-report-panel">
-
-                    <div class="extended-panel-header">
-
-                        <div>
-
-                            <h2>
-                                Pagos
-                            </h2>
-
-                            <span>
-                                Registros financieros
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="extended-stat-list">
-
-                        <div>
-
-                            <span>
-                                Cobros nuevos
-                            </span>
-
-                            <strong>
-                                ${charges.length}
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Pagos registrados
-                            </span>
-
-                            <strong>
-                                ${
-                                    (data.payments || [])
-                                        .filter(
-                                            item =>
-                                                item.status === "Pagado"
-                                        ).length
-                                }
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Pendientes
-                            </span>
-
-                            <strong>
-                                ${
-                                    (data.payments || [])
-                                        .filter(
-                                            item =>
-                                                item.status !== "Pagado"
-                                        ).length
-                                }
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <section class="extended-report-panel">
-
-                    <div class="extended-panel-header">
-
-                        <div>
-
-                            <h2>
-                                Reservas
-                            </h2>
-
-                            <span>
-                                Estado actual
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="extended-reservation-stats">
-
-                        <div class="confirmed">
-
-                            <strong>
-                                ${confirmedReservations.length}
-                            </strong>
-
-                            <span>
-                                Confirmadas
-                            </span>
-
-                        </div>
-
-
-                        <div class="cancelled">
-
-                            <strong>
-                                ${cancelledReservations.length}
-                            </strong>
-
-                            <span>
-                                Canceladas
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <section class="extended-report-panel">
-
-                    <div class="extended-panel-header">
-
-                        <div>
-
-                            <h2>
-                                Multas
-                            </h2>
-
-                            <span>
-                                Situación actual
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="extended-fine-summary">
-
-                        <div>
-
-                            <span>
-                                Pendientes
-                            </span>
-
-                            <strong>
-                                ${pendingFines.length}
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Monto
-                            </span>
-
-                            <strong>
-                                ${extendedMoney(
-                                    totalFines
-                                )}
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        id="extendedOpenFines"
-                        class="extended-wide-button"
-                    >
-                        Revisar multas
-                    </button>
-
-                </section>
-
-            </div>
-
-
-            <!-- ACTIVIDAD -->
-
-            <section class="extended-report-panel extended-activity-panel">
-
-                <div class="extended-panel-header">
-
-                    <div>
-
-                        <h2>
-                            Actividad administrativa
-                        </h2>
-
-                        <span>
-                            Últimos movimientos realizados
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="extended-activity-list">
-
-                    ${
-                        activities.length
-
-                        ?
-
-                        activities
-                            .slice(0, 10)
-                            .map(activity => `
-
-                                <div class="extended-activity-row">
-
-                                    <div class="extended-activity-icon">
-                                        ${getExtendedActivityIcon(
-                                            activity.type
-                                        )}
-                                    </div>
-
-
-                                    <div class="extended-activity-content">
-
-                                        <strong>
-                                            ${extendedEscape(
-                                                activity.type
-                                            )}
-                                        </strong>
-
-                                        <span>
-                                            ${extendedEscape(
-                                                activity.description ||
-                                                "Actividad administrativa"
-                                            )}
-                                        </span>
-
-                                    </div>
-
-
-                                    <div class="extended-activity-meta">
-
-                                        ${
-                                            activity.amount
-
-                                                ?
-
-                                                `<strong>
-                                                    ${extendedMoney(
-                                                        activity.amount
-                                                    )}
-                                                </strong>`
-
-                                                :
-
-                                                ""
-                                        }
-
-                                        <span>
-                                            ${extendedDate(
-                                                activity.date
-                                            )}
-                                        </span>
-
-                                    </div>
-
-                                </div>
-
-                            `)
-                            .join("")
-
-                        :
-
-                        `
-
-                            <div class="extended-empty-activity">
-
-                                <div>
-                                    ✓
-                                </div>
-
-                                <strong>
-                                    No hay actividad adicional
-                                </strong>
-
-                                <span>
-                                    Las nuevas acciones administrativas
-                                    aparecerán aquí.
-                                </span>
-
-                            </div>
-
-                        `
-                    }
-
-                </div>
-
-            </section>
-
-
-            <!-- ALERTAS -->
-
-            <div class="extended-alert-grid">
-
-                <div class="extended-alert blue">
-
-                    <div>
-                        $
-                    </div>
-
-                    <section>
-
-                        <strong>
-                            Seguimiento financiero
-                        </strong>
-
-                        <span>
-                            Actualmente existen
-                            ${extendedMoney(summary.pending)}
-                            pendientes por recaudar.
-                        </span>
-
-                    </section>
-
-                </div>
-
-
-                <div class="extended-alert orange">
-
-                    <div>
-                        !
-                    </div>
-
-                    <section>
-
-                        <strong>
-                            Atención administrativa
-                        </strong>
-
-                        <span>
-                            Hay ${pendingFines.length}
-                            multa${pendingFines.length !== 1 ? "s" : ""}
-                            pendiente${pendingFines.length !== 1 ? "s" : ""}.
-                        </span>
-
-                    </section>
-
-                </div>
-
-            </div>
-
+      <div class="extended-reports financial-reports">
+        <div class="extended-reports-header">
+          <div>
+            <span class="extended-eyebrow">ADMINISTRACIÓN · FINANZAS</span>
+            <h1>Reportes financieros</h1>
+            <p>Control de ingresos, gastos, morosidad y compromisos del condominio.</p>
+            <span class="financial-demo-tag">Datos de demostración para prototipo</span>
+          </div>
+          <div class="extended-report-actions">
+            <button type="button" id="extendedRefreshReport" class="extended-secondary-button">↻ Actualizar</button>
+            <button type="button" id="extendedPrintReport" class="extended-secondary-button">▤ Exportar PDF</button>
+            <button type="button" id="extendedExportReport" class="extended-primary-button">↓ Exportar CSV</button>
+          </div>
         </div>
 
-    `;
+        <div class="financial-filterbar">
+          <strong>Período de referencia: Octubre 2026</strong>
+          <span>Última actualización: ${new Date().toLocaleDateString("es-CL")}</span>
+        </div>
 
+        <div class="extended-report-kpis financial-kpis">
+          <article class="extended-report-card blue"><div class="extended-report-icon">↗</div><div><span>Ingresos recaudados</span><strong>${money(summary.collected)}</strong><small>${collectionPercentage}% del monto facturado</small></div></article>
+          <article class="extended-report-card red"><div class="extended-report-icon">↘</div><div><span>Gastos del período</span><strong>${money(totalExpenses)}</strong><small>Presupuesto: ${money(totalBudget)}</small></div></article>
+          <article class="extended-report-card orange"><div class="extended-report-icon">!</div><div><span>Deuda de residentes</span><strong>${money(Math.max(Number(summary.pending || 0), residentDebtTotal))}</strong><small>Montos pendientes de cobro</small></div></article>
+          <article class="extended-report-card purple"><div class="extended-report-icon">▣</div><div><span>Fondo de reserva</span><strong>${money(reserveFund)}</strong><small>Saldo referencial acumulado</small></div></article>
+        </div>
+
+        <div class="financial-main-grid">
+          <section class="extended-report-panel financial-panel">
+            <div class="extended-panel-header"><div><h2>Flujo financiero</h2><span>Ingresos recaudados versus gastos mensuales</span></div><span class="financial-legend"><i class="financial-dot income"></i> Ingresos <i class="financial-dot expense"></i> Gastos</span></div>
+            <div class="financial-trend-chart" role="img" aria-label="Gráfico de barras de ingresos y gastos por mes">
+              ${monthTrend.map(item => `<div class="financial-trend-column"><div class="financial-trend-bars"><span class="income-bar" title="Ingresos ${money(item.income)}" style="height:${Math.max(4, item.income / maxTrend * 100)}%"></span><span class="expense-bar" title="Gastos ${money(item.expense)}" style="height:${Math.max(4, item.expense / maxTrend * 100)}%"></span></div><small>${safe(item.label)}</small></div>`).join("")}
+            </div>
+            <div class="financial-balance-strip"><span>Balance del período</span><strong class="${balance >= 0 ? "positive" : "negative"}">${money(balance)}</strong></div>
+          </section>
+          <section class="extended-report-panel financial-panel">
+            <div class="extended-panel-header"><div><h2>Distribución de gastos</h2><span>Gasto real por categoría</span></div></div>
+            <div class="financial-expense-list">${expenses.map(item => `<div class="financial-expense-item"><div class="financial-expense-label"><span>${safe(item.category)}</span><strong>${money(item.amount)}</strong></div><div class="financial-expense-track"><span style="width:${item.amount / maxExpense * 100}%"></span></div><small>${Math.round(item.amount / totalExpenses * 100)}% del gasto total</small></div>`).join("")}</div>
+          </section>
+        </div>
+
+        <div class="financial-main-grid">
+          <section class="extended-report-panel financial-panel">
+            <div class="extended-panel-header"><div><h2>Presupuesto vs. gasto real</h2><span>Control de ejecución presupuestaria</span></div><strong class="financial-under-budget">${Math.round((1 - totalExpenses / totalBudget) * 100)}% bajo presupuesto</strong></div>
+            ${expenses.map(item => { const pct = Math.min(100, item.amount / item.budget * 100); return `<div class="financial-budget-row"><div><span>${safe(item.category)}</span><strong>${money(item.amount)} <small>/ ${money(item.budget)}</small></strong></div><div class="financial-budget-track"><span style="width:${pct}%"></span></div></div>`; }).join("")}
+            <div class="financial-budget-total"><span>Total ejecutado</span><strong>${money(totalExpenses)} / ${money(totalBudget)}</strong></div>
+          </section>
+          <section class="extended-report-panel financial-panel reserve-panel">
+            <div class="extended-panel-header"><div><h2>Fondo de reserva</h2><span>Proyección de respaldo financiero</span></div></div>
+            <div class="reserve-amount">${money(reserveFund)}</div><p>Saldo referencial disponible para emergencias y reparaciones extraordinarias.</p>
+            <div class="reserve-progress"><span style="width:75%"></span></div><div class="reserve-meta"><span>Meta referencial: ${money(6000000)}</span><strong>75%</strong></div>
+            <div class="reserve-note">Meta de ahorro ilustrativa; ajustar al presupuesto aprobado por la comunidad.</div>
+          </section>
+        </div>
+
+        <section class="extended-report-panel financial-panel financial-table-panel">
+          <div class="extended-panel-header"><div><h2>Morosidad de residentes</h2><span>Detalle de montos pendientes de cobro</span></div><strong>${residentDebts.length} registro(s)</strong></div>
+          <div class="financial-table-scroll"><table class="financial-table"><thead><tr><th>Residente</th><th>Depto.</th><th>Concepto</th><th>Fecha</th><th>Monto pendiente</th></tr></thead><tbody>
+          ${residentDebts.length ? residentDebts.slice(0,8).map(item => `<tr><td>${safe(item.resident)}</td><td>${safe(item.apartment)}</td><td>${safe(item.concept)}</td><td>${safe(item.date)}</td><td class="financial-amount">${money(item.amount)}</td></tr>`).join("") : `<tr><td colspan="5" class="financial-empty">No hay cobros pendientes registrados.</td></tr>`}
+          </tbody></table></div>
+          <div class="financial-table-foot"><span>Multas pendientes: ${pendingFines.length}</span><strong>${money(totalFines)}</strong></div>
+        </section>
+
+        <section class="extended-report-panel financial-panel financial-table-panel">
+          <div class="extended-panel-header"><div><h2>Deudas a proveedores</h2><span>Compromisos de pago del condominio · datos ficticios</span></div><strong>${money(supplierDebtTotal)} por pagar</strong></div>
+          <div class="financial-table-scroll"><table class="financial-table"><thead><tr><th>Proveedor</th><th>Concepto</th><th>Vencimiento</th><th>Estado</th><th>Monto</th></tr></thead><tbody>
+          ${supplierDebts.map(item => `<tr><td>${safe(item.supplier)}</td><td>${safe(item.concept)}</td><td>${safe(item.due)}</td><td><span class="financial-status ${item.status === "Vencida" ? "overdue" : "upcoming"}">${safe(item.status)}</span></td><td class="financial-amount">${money(item.amount)}</td></tr>`).join("")}
+          </tbody></table></div>
+        </section>
+
+        <section class="extended-report-panel financial-panel financial-table-panel">
+          <div class="extended-panel-header"><div><h2>Sueldos y costos de personal</h2><span>Resumen mensual de referencia · datos ficticios</span></div><strong>${money(3200000)}</strong></div>
+          <div class="financial-payroll-grid"><div><span>Remuneraciones</span><strong>${money(2600000)}</strong></div><div><span>Cotizaciones y cargas</span><strong>${money(420000)}</strong></div><div><span>Horas extra / reemplazos</span><strong>${money(180000)}</strong></div></div>
+        </section>
+
+        <section class="extended-report-panel extended-activity-panel financial-panel">
+          <div class="extended-panel-header"><div><h2>Actividad administrativa</h2><span>Últimos movimientos registrados</span></div></div>
+          <div class="extended-activity-list">${activities.length ? activities.slice(0,6).map(activity => `<div class="extended-activity-row"><div class="extended-activity-icon">${getExtendedActivityIcon(activity.type)}</div><div class="extended-activity-content"><strong>${safe(activity.type)}</strong><span>${safe(activity.description || "Actividad administrativa")}</span></div><div class="extended-activity-meta">${activity.amount ? `<strong>${money(activity.amount)}</strong>` : ""}<span>${extendedDate(activity.date)}</span></div></div>`).join("") : `<div class="extended-empty-activity"><strong>Sin movimientos adicionales</strong><span>Las nuevas acciones administrativas aparecerán aquí.</span></div>`}</div>
+        </section>
+      </div>`;
 
     setupExtendedReportEvents();
-
 }
 
 
@@ -7026,76 +6375,39 @@ function renderExtendedReports() {
 ========================================================= */
 
 function setupExtendedReportEvents() {
+    const refresh = document.getElementById("extendedRefreshReport");
+    const exportButton = document.getElementById("extendedExportReport");
+    const printButton = document.getElementById("extendedPrintReport");
+    const collection = document.getElementById("extendedOpenCollection");
+    const fines = document.getElementById("extendedOpenFines");
 
-    const refresh =
-        document.getElementById(
-            "extendedRefreshReport"
-        );
+    if (refresh) refresh.onclick = function() {
+        renderExtendedReports();
+        showToast("Reporte actualizado.");
+    };
+    if (exportButton) exportButton.onclick = exportExtendedReportCSV;
+    if (printButton) printButton.onclick = exportExtendedReportPDF;
+    if (collection) collection.onclick = openExtendedCollectionModal;
+    if (fines) fines.onclick = function() {
+        if (typeof openFineDetails === "function") openFineDetails();
+    };
+}
 
-    const exportButton =
-        document.getElementById(
-            "extendedExportReport"
-        );
-
-    const collection =
-        document.getElementById(
-            "extendedOpenCollection"
-        );
-
-    const fines =
-        document.getElementById(
-            "extendedOpenFines"
-        );
-
-
-    if (refresh) {
-
-        refresh.onclick = function() {
-
-            renderExtendedReports();
-
-            showToast(
-                "Reporte actualizado."
-            );
-
-        };
-
+function exportExtendedReportPDF() {
+    // Abre una versión imprimible del reporte para que el navegador permita Guardar como PDF.
+    const report = document.querySelector("#screen-reports .financial-reports");
+    if (!report) return;
+    const printWindow = window.open("", "_blank", "width=1100,height=800");
+    if (!printWindow) {
+        showToast("Permite las ventanas emergentes para exportar el PDF.");
+        return;
     }
-
-
-    if (exportButton) {
-
-        exportButton.onclick =
-            exportExtendedReportCSV;
-
-    }
-
-
-    if (collection) {
-
-        collection.onclick =
-            openExtendedCollectionModal;
-
-    }
-
-
-    if (fines) {
-
-        fines.onclick = function() {
-
-            if (
-                typeof openFineDetails ===
-                "function"
-            ) {
-
-                openFineDetails();
-
-            }
-
-        };
-
-    }
-
+    const styles = `body{font-family:Arial,sans-serif;color:#172033;padding:24px}h1{margin:0 0 8px}p{color:#64748b}.financial-demo-tag{display:inline-block;padding:5px 9px;background:#eff6ff;color:#1d4ed8;border-radius:8px;font-size:12px}.extended-report-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.extended-report-card,.extended-report-panel{border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin-bottom:14px;break-inside:avoid}.extended-report-card{display:flex;flex-direction:column;gap:6px}.extended-report-card span,.extended-report-card small,.extended-panel-header span{color:#64748b;font-size:11px}.extended-report-card strong{font-size:20px}.financial-main-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.extended-panel-header{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.extended-panel-header h2{font-size:16px;margin:0 0 4px}.financial-trend-chart{height:145px;display:flex;align-items:flex-end;gap:15px}.financial-trend-column{flex:1;text-align:center}.financial-trend-bars{height:120px;display:flex;align-items:flex-end;justify-content:center;gap:4px}.financial-trend-bars span{display:block;width:12px;border-radius:4px 4px 0 0}.income-bar{background:#2563eb}.expense-bar{background:#f59e0b}.financial-expense-item,.financial-budget-row{margin:12px 0}.financial-expense-label,.financial-budget-row>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:12px}.financial-expense-track,.financial-budget-track,.reserve-progress{height:7px;background:#eef2f7;border-radius:10px;overflow:hidden;margin:6px 0}.financial-expense-track span{display:block;height:100%;background:#2563eb}.financial-budget-track span,.reserve-progress span{display:block;height:100%;background:#16a34a}.financial-table{width:100%;border-collapse:collapse;font-size:11px}.financial-table th,.financial-table td{text-align:left;padding:8px;border-bottom:1px solid #e2e8f0}.financial-table th{background:#f8fafc}.financial-amount{text-align:right!important;font-weight:bold}.financial-payroll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.financial-payroll-grid>div{background:#f8fafc;padding:12px;border-radius:8px}.financial-payroll-grid span,.financial-payroll-grid strong{display:block;margin-bottom:5px}.financial-status{padding:4px 7px;border-radius:6px}.overdue{background:#fef2f2;color:#b91c1c}.upcoming{background:#fff7ed;color:#9a3412}.financial-balance-strip,.financial-budget-total,.financial-table-foot,.reserve-meta{display:flex;justify-content:space-between;gap:10px;padding-top:12px;margin-top:12px;border-top:1px solid #e2e8f0}.positive{color:#15803d}.negative{color:#b91c1c}@media print{body{padding:0}.extended-report-panel,.extended-report-card{break-inside:avoid}}`;
+    printWindow.document.open();
+    printWindow.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>HabitApp - Reporte financiero</title><style>${styles}</style></head><body>${report.innerHTML}</body></html>`);
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => { printWindow.print(); }, 350);
 }
 
 
@@ -7104,155 +6416,31 @@ function setupExtendedReportEvents() {
 ========================================================= */
 
 function exportExtendedReportCSV() {
-
-    const summary =
-        getExtendedFinanceSummary();
-
-
-    const rows = [];
-
-
-    rows.push([
-        "TIPO",
-        "RESIDENTE",
-        "DEPARTAMENTO",
-        "CONCEPTO",
-        "MONTO",
-        "FECHA",
-        "ESTADO"
-    ]);
-
-
-    (data.payments || [])
-        .forEach(payment => {
-
-            rows.push([
-
-                "Pago",
-
-                payment.resident,
-
-                payment.apartment,
-
-                "Pago registrado",
-
-                payment.amount,
-
-                payment.date,
-
-                payment.status
-
-            ]);
-
-        });
-
-
-    (data.charges || [])
-        .forEach(charge => {
-
-            rows.push([
-
-                "Cobro",
-
-                charge.resident,
-
-                charge.apartment,
-
-                charge.concept,
-
-                charge.amount,
-
-                charge.date,
-
-                charge.status
-
-            ]);
-
-        });
-
-
-    (data.fines || [])
-        .forEach(fine => {
-
-            rows.push([
-
-                "Multa",
-
-                fine.resident,
-
-                fine.apartment,
-
-                fine.reason,
-
-                fine.amount,
-
-                fine.date,
-
-                fine.status
-
-            ]);
-
-        });
-
-
-    const csv =
-        rows
-            .map(row =>
-                row.map(value => {
-
-                    const text =
-                        String(value ?? "");
-
-                    return `"${text.replace(
-                        /"/g,
-                        '""'
-                    )}"`;
-
-                }).join(",")
-            )
-            .join("\n");
-
-
-    const blob =
-        new Blob(
-            [
-                "\uFEFF" + csv
-            ],
-            {
-                type:
-                    "text/csv;charset=utf-8;"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(blob);
-
-
-    const link =
-        document.createElement("a");
-
-
+    const rows = [["TIPO","RESIDENTE/PROVEEDOR","DEPARTAMENTO","CONCEPTO","MONTO","FECHA","ESTADO"]];
+    (data.payments || []).forEach(payment => rows.push(["Pago", payment.resident, payment.apartment, "Gastos comunes", payment.amount, payment.date, payment.status]));
+    (data.charges || []).forEach(charge => rows.push(["Cobro", charge.resident, charge.apartment, charge.concept, charge.amount, charge.date, charge.status]));
+    (data.fines || []).forEach(fine => rows.push(["Multa", fine.resident, fine.apartment, fine.reason, fine.amount, fine.date, fine.status]));
+    [
+        ["Gasto", "Personal", "—", "Sueldos y cargas", 3200000, "2026-10", "Demostración"],
+        ["Gasto", "Servicios básicos", "—", "Electricidad/agua/gas", 1400000, "2026-10", "Demostración"],
+        ["Gasto", "Mantención", "—", "Mantención y reparaciones", 1550000, "2026-10", "Demostración"],
+        ["Gasto", "Aseo y seguridad", "—", "Servicios comunes", 1530000, "2026-10", "Demostración"],
+        ["Proveedor", "Ascensores del Sur", "—", "Mantención mensual", 480000, "2026-10-25", "Vencida"],
+        ["Proveedor", "Servicios de Aseo SpA", "—", "Servicio de octubre", 520000, "2026-10-30", "Por vencer"],
+        ["Proveedor", "EnerCon Servicios", "—", "Electricidad áreas comunes", 350000, "2026-11-05", "Por vencer"],
+        ["Fondo de reserva", "Condominio", "—", "Saldo referencial", 4500000, "2026-10", "Demostración"]
+    ].forEach(row => rows.push(row));
+    const csv = rows.map(row => row.map(value => `"${String(value ?? "").replace(/"/g, '""')}"`).join(";")).join("\r\n");
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
     link.href = url;
-
-    link.download =
-        `habitapp-reporte-${extendedToday()}.csv`;
-
-
+    link.download = `habitapp-reporte-financiero-${extendedToday()}.csv`;
     document.body.appendChild(link);
-
     link.click();
-
     document.body.removeChild(link);
-
-
     URL.revokeObjectURL(url);
-
-
-    showToast(
-        "Reporte CSV exportado correctamente."
-    );
-
+    showToast("Reporte financiero CSV exportado correctamente.");
 }
 
 
