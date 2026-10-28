@@ -1919,3 +1919,748 @@ tbody tr:hover td {
     }
 
 }
+/* =========================================================
+   HABITAPP — MEJORAS VISUALES DE REPORTES FINANCIEROS
+   Complemento del CSS existente. No elimina estilos previos.
+   ========================================================= */
+
+/* CONTENEDOR GENERAL */
+
+#screen-reports .financial-reports {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    color: var(--text);
+}
+
+#screen-reports .financial-reports * {
+    min-width: 0;
+}
+
+#screen-reports .financial-reports h1 {
+    color: var(--text);
+    font-size: clamp(23px, 2vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.9px;
+    line-height: 1.2;
+}
+
+#screen-reports .financial-reports p {
+    line-height: 1.65;
+}
+
+/* ENCABEZADO */
+
+#screen-reports .extended-reports-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 25px;
+}
+
+#screen-reports .extended-eyebrow {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+}
+
+#screen-reports .financial-demo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 7px 11px;
+    border: 1px solid #dbeafe;
+    border-radius: 9px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#screen-reports .extended-report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+}
+
+#screen-reports .extended-secondary-button,
+#screen-reports .extended-primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+#screen-reports .extended-secondary-button {
+    background: white;
+    color: var(--text-secondary);
+}
+
+#screen-reports .extended-secondary-button:hover {
+    border-color: #bfdbfe;
+    background: var(--primary-soft);
+    color: var(--primary);
+}
+
+#screen-reports .extended-primary-button {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.14);
+}
+
+#screen-reports .extended-primary-button:hover {
+    border-color: var(--primary-dark);
+    background: var(--primary-dark);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+    transform: translateY(-1px);
+}
+
+#screen-reports .extended-secondary-button:focus-visible,
+#screen-reports .extended-primary-button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    outline-offset: 3px;
+}
+
+/* FILTROS */
+
+#screen-reports .financial-filterbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 15px 17px;
+    margin-bottom: 21px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: white;
+    box-shadow: var(--shadow-soft);
+}
+
+#screen-reports .financial-filterbar label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#screen-reports .financial-filterbar select,
+#screen-reports .financial-filterbar input {
+    min-height: 36px;
+    max-width: 100%;
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    color: var(--text);
+    font-size: 11px;
+}
+
+#screen-reports .financial-filterbar select:focus,
+#screen-reports .financial-filterbar input:focus {
+    border-color: #93c5fd;
+    outline: 3px solid rgba(37, 99, 235, 0.1);
+}
+
+/* INDICADORES FINANCIEROS */
+
+#screen-reports .financial-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 21px;
+}
+
+#screen-reports .extended-report-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+    padding: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: white;
+    box-shadow: var(--shadow-soft);
+    transition:
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#screen-reports .extended-report-card:hover {
+    border-color: #dbeafe;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+#screen-reports .extended-report-card > span {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+#screen-reports .extended-report-card > strong {
+    color: var(--text);
+    font-size: clamp(20px, 2vw, 27px);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    overflow-wrap: anywhere;
+}
+
+#screen-reports .extended-report-card > small {
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* PANELES */
+
+#screen-reports .financial-panel {
+    min-width: 0;
+    padding: 21px;
+    margin-bottom: 19px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+    background: white;
+    box-shadow: var(--shadow-soft);
+}
+
+#screen-reports .extended-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 19px;
+}
+
+#screen-reports .extended-panel-header h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.25px;
+    line-height: 1.4;
+}
+
+#screen-reports .extended-panel-header span {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+#screen-reports .extended-panel-header > strong {
+    flex-shrink: 0;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+}
+
+/* GRÁFICO DE FLUJO DE CAJA */
+
+#screen-reports .financial-main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 19px;
+    margin: 20px 0;
+}
+
+#screen-reports .financial-trend-chart {
+    min-width: 0;
+    gap: 10px;
+    padding: 15px 2px 0;
+}
+
+#screen-reports .financial-trend-column {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+#screen-reports .financial-trend-bars {
+    min-width: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+#screen-reports .financial-trend-bars span {
+    max-width: 24px;
+    transition: height 0.25s ease;
+}
+
+#screen-reports .income-bar {
+    background: var(--primary);
+}
+
+#screen-reports .expense-bar {
+    background: #f59e0b;
+}
+
+#screen-reports .financial-trend-column small {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* DISTRIBUCIÓN DE GASTOS */
+
+#screen-reports .financial-expense-item {
+    margin: 17px 0;
+}
+
+#screen-reports .financial-expense-label {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 11px;
+}
+
+#screen-reports .financial-expense-label span {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+#screen-reports .financial-expense-label strong {
+    flex-shrink: 0;
+    color: var(--text);
+    font-weight: 700;
+}
+
+#screen-reports .financial-expense-track,
+#screen-reports .financial-budget-track,
+#screen-reports .reserve-progress {
+    height: 8px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #eef2f7;
+}
+
+#screen-reports .financial-expense-track span,
+#screen-reports .financial-budget-track span,
+#screen-reports .reserve-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.3s ease;
+}
+
+/* PRESUPUESTO */
+
+#screen-reports .financial-budget-row {
+    padding: 12px 0;
+    margin: 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+#screen-reports .financial-budget-row:last-child {
+    border-bottom: 0;
+}
+
+#screen-reports .financial-budget-row > div:first-child {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 9px;
+}
+
+#screen-reports .financial-budget-row > div:first-child span {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+#screen-reports .financial-budget-row > div:first-child strong {
+    color: var(--text);
+    font-size: 11px;
+}
+
+#screen-reports .financial-under-budget {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 8px;
+    border-radius: 7px;
+    background: var(--success-soft);
+    color: var(--success);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+#screen-reports .financial-balance-strip,
+#screen-reports .financial-budget-total,
+#screen-reports .financial-table-foot,
+#screen-reports .reserve-meta {
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+#screen-reports .positive {
+    color: var(--success);
+}
+
+#screen-reports .negative {
+    color: var(--danger);
+}
+
+/* FONDO DE RESERVA */
+
+#screen-reports .reserve-amount {
+    color: var(--text);
+    font-size: clamp(25px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    overflow-wrap: anywhere;
+}
+
+#screen-reports .reserve-panel p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+#screen-reports .reserve-note {
+    padding: 12px;
+    border: 1px solid #edf0f5;
+    border-radius: 10px;
+    background: var(--surface-soft);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* TABLAS FINANCIERAS */
+
+#screen-reports .financial-table-panel {
+    overflow: hidden;
+}
+
+#screen-reports .financial-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+
+#screen-reports .financial-table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 11px;
+}
+
+#screen-reports .financial-table th {
+    padding: 13px;
+    background: #f8fafc;
+    color: var(--text-muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+#screen-reports .financial-table td {
+    padding: 13px;
+    border-bottom: 1px solid #f0f2f5;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+#screen-reports .financial-table tbody tr:hover td {
+    background: #f8fbff;
+}
+
+#screen-reports .financial-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+#screen-reports .financial-table .financial-amount {
+    color: var(--text);
+    font-weight: 700;
+    text-align: right;
+}
+
+#screen-reports .financial-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#screen-reports .financial-status.overdue {
+    background: var(--danger-soft);
+    color: var(--danger);
+}
+
+#screen-reports .financial-status.upcoming {
+    background: var(--warning-soft);
+    color: var(--warning);
+}
+
+#screen-reports .financial-empty {
+    padding: 25px 15px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* SUELDOS Y COSTOS DE PERSONAL */
+
+#screen-reports .financial-payroll-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#screen-reports .financial-payroll-grid > div {
+    padding: 15px;
+    border: 1px solid #edf0f5;
+    border-radius: 11px;
+    background: var(--surface-soft);
+}
+
+#screen-reports .financial-payroll-grid span {
+    margin-bottom: 9px;
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+#screen-reports .financial-payroll-grid strong {
+    color: var(--text);
+    font-size: 17px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* ACTIVIDAD ADMINISTRATIVA */
+
+#screen-reports .extended-activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#screen-reports .extended-activity-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+#screen-reports .extended-activity-row:first-child {
+    padding-top: 0;
+}
+
+#screen-reports .extended-activity-row:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+#screen-reports .extended-activity-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+    border-radius: 11px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#screen-reports .extended-activity-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#screen-reports .extended-activity-content strong {
+    color: var(--text);
+    font-size: 11px;
+}
+
+#screen-reports .extended-activity-content span,
+#screen-reports .extended-activity-meta span {
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+#screen-reports .extended-activity-meta {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+#screen-reports .extended-activity-meta strong {
+    color: var(--text);
+    font-size: 11px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    #screen-reports .financial-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #screen-reports .financial-main-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #screen-reports .extended-reports-header {
+        gap: 16px;
+    }
+}
+
+/* MÓVIL */
+
+@media (max-width: 650px) {
+    #screen-reports .extended-reports-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #screen-reports .extended-report-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: stretch;
+    }
+
+    #screen-reports .extended-primary-button {
+        grid-column: 1 / -1;
+    }
+
+    #screen-reports .extended-report-actions button {
+        width: 100%;
+    }
+
+    #screen-reports .financial-filterbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #screen-reports .financial-filterbar label {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #screen-reports .financial-filterbar select,
+    #screen-reports .financial-filterbar input {
+        width: 100%;
+    }
+
+    #screen-reports .financial-kpis {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 11px;
+    }
+
+    #screen-reports .extended-report-card {
+        padding: 17px;
+    }
+
+    #screen-reports .financial-panel {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    #screen-reports .extended-panel-header {
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    #screen-reports .extended-panel-header > strong {
+        text-align: left;
+    }
+
+    #screen-reports .financial-payroll-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #screen-reports .financial-trend-chart {
+        gap: 5px;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    #screen-reports .financial-trend-column small {
+        font-size: 9px;
+    }
+
+    #screen-reports .extended-activity-row {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    #screen-reports .extended-activity-meta {
+        margin-left: 49px;
+        align-items: flex-start;
+    }
+}
+
+/* IMPRESIÓN */
+
+@media print {
+    #screen-reports .extended-reports-header {
+        display: block;
+    }
+
+    #screen-reports .extended-report-actions {
+        display: none;
+    }
+
+    #screen-reports .financial-panel,
+    #screen-reports .extended-report-card {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    #screen-reports .financial-main-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #screen-reports .financial-table-scroll {
+        overflow: visible;
+    }
+
+    #screen-reports .financial-table {
+        min-width: 0;
+        font-size: 9px;
+    }
+
+    #screen-reports .financial-table th,
+    #screen-reports .financial-table td {
+        padding: 7px;
+    }
+}
