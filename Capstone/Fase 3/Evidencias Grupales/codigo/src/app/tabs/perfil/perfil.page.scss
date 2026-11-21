@@ -1,0 +1,159 @@
+﻿ion-content {
+  --background: #f2f2f7;
+}
+
+.page-header {
+  margin: 8px 0 20px;
+
+  .eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8e8e93;
+    margin-bottom: 4px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+  }
+}
+
+.section-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8e8e93;
+  margin: 26px 0 10px 4px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+
+  .avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #2c2c2e, #0a0a0a);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  h2 {
+    margin: 0 0 3px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  span {
+    font-size: 12px;
+    color: #6e6e73;
+  }
+}
+
+.list-card {
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 18px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    font-size: 13px;
+    color: #000;
+    text-align: left;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .row-label {
+      color: #6e6e73;
+    }
+
+    strong {
+      font-weight: 600;
+      font-size: 12.5px;
+    }
+  }
+
+  .row-button {
+    cursor: pointer;
+
+    .chevron {
+      color: #c7c7cc;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    &.danger span:first-child {
+      color: #ff3b30;
+    }
+  }
+}
+
+.profile-card .profile-info { flex: 1; }
+.edit-btn {
+  background: #f2f2f7;
+  color: #0a84ff;
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.field {
+  flex: 1;
+  min-width: 0;
+  margin-left: 16px;
+  text-align: right;
+  border: 0;
+  border-bottom: 1px solid #d1d1d6;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  padding: 4px 0;
+  outline: none;
+  &:focus { border-bottom-color: #0a84ff; }
+}
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  button {
+    flex: 1;
+    border: 0;
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-secondary { background: #e5e5ea; color: #000; }
+  .btn-primary { background: #1c1c1e; color: #fff; }
+  button:disabled { opacity: 0.6; }
+}

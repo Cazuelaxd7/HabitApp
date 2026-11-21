@@ -1,0 +1,109 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <header class="page-header">
+    <span class="eyebrow">Comunidad</span>
+    <h1>Comunidad</h1>
+    <p>Entérate de lo que pasa en tu edificio.</p>
+  </header>
+
+  <!-- Filtro por categoría -->
+  <div class="segment-control">
+    <button
+      class="segment"
+      [class.active]="selectedSegment === 'todas'"
+      (click)="onSegmentChange('todas')"
+      type="button"
+    >Todas</button>
+    <button
+      class="segment"
+      [class.active]="selectedSegment === 'comunidad'"
+      (click)="onSegmentChange('comunidad')"
+      type="button"
+    >Comunidad</button>
+    <button
+      class="segment"
+      [class.active]="selectedSegment === 'administracion'"
+      (click)="onSegmentChange('administracion')"
+      type="button"
+    >Administración</button>
+  </div>
+
+  <!-- Estado vacío -->
+  <div *ngIf="filteredPosts.length === 0" class="empty-state-hb">
+    <span class="empty-icon">💬</span>
+    <p>No hay publicaciones en esta categoría todavía.</p>
+  </div>
+
+  <!-- Lista de posts -->
+  <div class="community-posts fade-in-list">
+    <div class="community-post" *ngFor="let post of filteredPosts">
+
+      <span
+        class="post-category"
+        [class.admin]="post.category === 'administracion'"
+        [class.community]="post.category === 'comunidad'"
+      >{{ post.tag }}</span>
+
+      <div class="post-header">
+        <div
+          class="post-avatar"
+          [class.admin-avatar]="post.category === 'administracion'"
+          [class.green-avatar]="post.category === 'comunidad'"
+        >{{ post.author.charAt(0) }}</div>
+        <div class="post-header-info">
+          <strong>{{ post.author }}</strong>
+          <span>{{ timeAgo(post) }}</span>
+        </div>
+      </div>
+
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.body }}</p>
+
+      <div class="post-actions">
+        <button type="button" [class.liked]="post.liked" (click)="toggleLike(post)">
+          {{ post.liked ? '♥' : '♡' }} {{ post.likes }}
+        </button>
+        <button type="button" (click)="openComments(post)">
+          💬 {{ post.commentsCount }}
+        </button>
+        <button class="share-button" type="button" (click)="sharePost(post)">
+          ↗ Compartir
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Botón flotante -->
+  <button class="floating-action" type="button" (click)="openNewPostModal()">+</button>
+
+  <!-- Modal nueva publicación -->
+  <div class="hb-modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+    <div class="hb-modal-sheet" (click)="$event.stopPropagation()">
+      <button class="hb-modal-close" type="button" (click)="closeModal()">×</button>
+
+      <h2 style="margin-bottom: 20px; font-size: 18px;">Nueva publicación</h2>
+
+      <div class="hb-field">
+        <label>Categoría</label>
+        <select [(ngModel)]="newPost.category">
+          <option value="comunidad">Comunidad</option>
+          <option value="administracion">Administración</option>
+        </select>
+      </div>
+
+      <div class="hb-field">
+        <label>Título</label>
+        <input type="text" [(ngModel)]="newPost.title" placeholder="Ej: Corte de agua programado" />
+      </div>
+
+      <div class="hb-field">
+        <label>Descripción</label>
+        <textarea [(ngModel)]="newPost.body" placeholder="Escribe los detalles..."></textarea>
+      </div>
+
+      <button class="primary-button" type="button" (click)="submitPost()">Publicar</button>
+    </div>
+  </div>
+
+</ion-content>

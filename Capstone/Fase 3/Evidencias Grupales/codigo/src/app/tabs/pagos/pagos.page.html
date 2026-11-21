@@ -1,0 +1,111 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+
+  <button class="back-button" type="button" (click)="goBack()">‹ Volver</button>
+
+  <header class="page-header">
+    <span class="eyebrow">Finanzas</span>
+    <h1>Gastos comunes</h1>
+    <p>Revisa y gestiona tus pagos.</p>
+  </header>
+
+  <!-- Tarjeta principal -->
+  <div *ngIf="pendiente" class="total-payment-card">
+    <span>Pendiente</span>
+    <strong>${{ formatMonto(pendiente.total) }}</strong>
+    <small>Correspondiente a {{ pendiente.mes }} · Vence el {{ pendiente.vencimiento }}</small>
+    <button class="primary-button" type="button" (click)="abrirModalPago()">Pagar ahora</button>
+  </div>
+
+  <div *ngIf="!pendiente" class="empty-state-hb">
+    <span class="empty-icon">✅</span>
+    <p>Estás al día. No tienes pagos pendientes este mes.</p>
+  </div>
+
+  <!-- Desglose -->
+  <section class="inner-section" *ngIf="pendiente">
+    <span class="section-label">Detalle</span>
+    <div class="detail-list">
+      <div class="detail-row" *ngFor="let item of pendiente.desglose">
+        <span>{{ item.concepto }}</span>
+        <strong>${{ formatMonto(item.monto) }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historial -->
+  <section class="inner-section">
+    <span class="section-label">Historial</span>
+
+    <div *ngIf="historial.length === 0" class="empty-state-hb">
+      <p>Aún no registras pagos.</p>
+    </div>
+
+    <div class="detail-list" *ngIf="historial.length > 0">
+      <div class="detail-row" *ngFor="let pago of historial">
+        <span>{{ pago.mes }} · {{ pago.metodo }} · {{ pago.comprobante }}</span>
+        <strong>${{ formatMonto(pago.monto) }}</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE PAGO -->
+  <div class="hb-modal-overlay" *ngIf="modalAbierto" (click)="cerrarModal()">
+    <div class="hb-modal-sheet" (click)="$event.stopPropagation()">
+      <button class="hb-modal-close" type="button" (click)="cerrarModal()" [disabled]="procesando">×</button>
+
+      <!-- Estado: seleccionar método -->
+      <ng-container *ngIf="!procesando && !comprobanteGenerado">
+        <h2 style="font-size:19px; margin-bottom:5px;">Pagar gastos comunes</h2>
+        <p style="color:#6e6e73; font-size:11px; margin-bottom:20px;">{{ pagoEnProceso?.mes }}</p>
+
+        <div class="amount-box">
+          <span>Total a pagar</span>
+          <strong>${{ formatMonto(pagoEnProceso?.total || 0) }}</strong>
+        </div>
+
+        <span class="method-label">Método de pago</span>
+        <div class="payment-methods">
+          <button
+            type="button"
+            class="method-card"
+            [class.selected]="metodoSeleccionado === 'Webpay'"
+            (click)="seleccionarMetodo('Webpay')"
+          >
+            <span class="method-icon">💳</span>
+            <span>Webpay</span>
+          </button>
+          <button
+            type="button"
+            class="method-card"
+            [class.selected]="metodoSeleccionado === 'Transferencia'"
+            (click)="seleccionarMetodo('Transferencia')"
+          >
+            <span class="method-icon">🏦</span>
+            <span>Transferencia</span>
+          </button>
+        </div>
+
+        <button class="primary-button" type="button" [disabled]="!metodoSeleccionado" (click)="confirmarPago()">Confirmar pago</button>
+      </ng-container>
+
+      <!-- Estado: procesando -->
+      <div class="processing-state" *ngIf="procesando">
+        <div class="spinner"></div>
+        <p>Procesando pago con {{ metodoSeleccionado }}...</p>
+      </div>
+
+      <!-- Estado: comprobante -->
+      <div class="receipt-state" *ngIf="comprobanteGenerado && !procesando">
+        <span class="receipt-check">✓</span>
+        <h2>Pago exitoso</h2>
+        <p class="receipt-amount">${{ formatMonto(pagoEnProceso?.total || 0) }}</p>
+        <div class="receipt-detail">
+          <div><span>Comprobante</span><strong>{{ comprobanteGenerado }}</strong></div>
+          <div><span>Método</span><strong>{{ metodoSeleccionado }}</strong></div>
+        </div>
+        <button class="primary-button" type="button" (click)="cerrarModal()" style="margin-top:18px;">Listo</button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

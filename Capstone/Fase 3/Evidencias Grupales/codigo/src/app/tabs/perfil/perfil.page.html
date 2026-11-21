@@ -1,0 +1,74 @@
+﻿<ion-content class="ion-padding" [fullscreen]="true">
+  <header class="page-header">
+    <span class="eyebrow">Mi cuenta</span>
+    <h1>Perfil</h1>
+  </header>
+
+  <div class="card profile-card">
+    <div class="avatar">{{ iniciales }}</div>
+    <div class="profile-info">
+      <h2>{{ nombreMostrado }}</h2>
+      <span>{{ rol }}</span>
+    </div>
+    @if (!editando) {
+      <button type="button" class="edit-btn" (click)="editar()">Editar</button>
+    }
+  </div>
+
+  <span class="section-label">Informaci&oacute;n</span>
+  <div class="card list-card">
+    <div class="row">
+      <span class="row-label">Nombre</span>
+      @if (editando) {
+        <input class="field" [(ngModel)]="nombre" placeholder="Tu nombre" />
+      } @else {
+        <strong>{{ nombre || '-' }}</strong>
+      }
+    </div>
+    <div class="row">
+      <span class="row-label">Correo</span>
+      <strong>{{ correo }}</strong>
+    </div>
+    <div class="row">
+      <span class="row-label">Tel&eacute;fono</span>
+      @if (editando) {
+        <input class="field" [(ngModel)]="telefono" placeholder="+56 9 ..." inputmode="tel" />
+      } @else {
+        <strong>{{ telefono || '-' }}</strong>
+      }
+    </div>
+    <div class="row">
+      <span class="row-label">Departamento</span>
+      @if (editando) {
+        <input class="field" [(ngModel)]="departamento" placeholder="Torre B &middot; 704" />
+      } @else {
+        <strong>{{ departamento || '-' }}</strong>
+      }
+    </div>
+    <div class="row">
+      <span class="row-label">Condominio</span>
+      @if (editando) {
+        <input class="field" [(ngModel)]="condominio" placeholder="Tu condominio" />
+      } @else {
+        <strong>{{ condominio || '-' }}</strong>
+      }
+    </div>
+  </div>
+
+  @if (editando) {
+    <div class="edit-actions">
+      <button type="button" class="btn-secondary" (click)="cancelar()" [disabled]="guardando">Cancelar</button>
+      <button type="button" class="btn-primary" (click)="guardar()" [disabled]="guardando">
+        {{ guardando ? 'Guardando...' : 'Guardar cambios' }}
+      </button>
+    </div>
+  }
+
+  <span class="section-label">Sesi&oacute;n</span>
+  <div class="card list-card">
+    <button type="button" class="row row-button danger" (click)="cerrarSesion()">
+      <span>Cerrar sesi&oacute;n</span>
+      <span class="chevron">&#8250;</span>
+    </button>
+  </div>
+</ion-content>

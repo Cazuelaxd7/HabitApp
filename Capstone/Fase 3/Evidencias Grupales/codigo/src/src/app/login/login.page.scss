@@ -1,0 +1,62 @@
+.login-content {
+    --background: #EAF3F6;
+}
+
+.login-wrap {
+    max-width: 360px;
+    margin: 80px auto 0;
+}
+
+.brand {
+    color: #21295C;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #64748B;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.login-btn {
+    margin-top: 16px;
+    --background: #065A82;
+}
+
+.error-msg {
+    font-size: 12.5px;
+    margin: 4px 0 0;
+}
+/* ===== Hero del login: titulo oscuro y fondo con profundidad ===== */
+.login-content {
+  --background: #dfeaf0;
+}
+
+.login-hero {
+  background: linear-gradient(180deg, #cfe0e8 0%, #eaf3f6 100%);
+
+  .login-logo {
+    background: #0b0b0f;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  h1 {
+    color: #0b0b0f;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    color: #3a3a3c;
+    font-weight: 500;
+  }
+}
+
+.login-sheet {
+  background: #f7f7fa;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+}

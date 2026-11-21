@@ -1,0 +1,41 @@
+﻿<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>
+      </svg>
+      <ion-label>Inicio</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="comunidad">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/>
+      </svg>
+      <ion-label>Comunidad</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="reservas">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/>
+      </svg>
+      <ion-label>Reservas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="notificaciones">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 16v-5a6 6 0 10-12 0v5l-2 2h16z"/><path d="M10 21h4"/>
+      </svg>
+      <ion-label>Avisos</ion-label>
+      @if (avisosPendientes > 0) {
+        <span class="tab-badge">{{ avisosPendientes }}</span>
+      }
+    </ion-tab-button>
+
+    <ion-tab-button tab="perfil">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>
+      </svg>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

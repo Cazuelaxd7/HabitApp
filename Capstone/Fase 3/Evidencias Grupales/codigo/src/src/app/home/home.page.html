@@ -1,0 +1,35 @@
+<ion-content class="ion-padding">
+  
+  <!-- Tarjeta contenedora -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Reservar Quincho</ion-card-title>
+      <ion-card-subtitle>Selecciona el día y la hora</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      
+      <!-- 1. Componente de Calendario -->
+      <!-- 'presentation="date"' hace que solo muestre días y meses, no reloj -->
+      <ion-datetime presentation="date" min="2026-09-11"></ion-datetime>
+
+      <!-- 2. Selector de Bloque Horario -->
+      <ion-list>
+        <ion-item>
+          <ion-select label="Horario disponible" placeholder="Elige un bloque">
+            <ion-select-option value="manana">09:00 - 13:00</ion-select-option>
+            <ion-select-option value="tarde">14:00 - 18:00</ion-select-option>
+            <ion-select-option value="noche">19:00 - 23:00</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <!-- 3. Botón de Confirmación -->
+      <ion-button expand="block" color="primary" class="ion-margin-top">
+        Confirmar Reserva
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
